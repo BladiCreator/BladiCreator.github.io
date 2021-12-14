@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
+* {
+ font-family: 'Readex Pro', sans-serif;
+}
+
+:root{
+    --DarkBackColor: rgb(20, 20, 20);
+    --DarkTextColor: white;
+    --DarkMediunBackColor: rgb(60, 60, 60);
+
+    --LightBackColor: white;
+    --LighTextColor: black;
+    --LightMediunBackColor: rgb(150, 150, 150);
+}
+
+body{
+    background-color: var(--LightBackColor);
+    color: var(--LighTextColor);
+}
+/* 
+.dark-mode{
+    background-color: var(--DarkBackColor);
+    color: var(--DarkTextColor);
+} */
+
+.con {
+    font-size: 5em;
+    color: white;
+    float: none;
+    margin: 20% 10%;
+    padding: 50px;
+
+    background-image: linear-gradient(to top right, blue, red);
+    border-radius: 10px;
+    text-align: center;
+
+}
+.con a {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+}
+
+/*Boton de modo oscuro*/
+
+.Dark_Mode_Button{
+    -webkit-appearance: none;
+    position: relative;
+    width: 80px;
+    height: 40px;
+    background-color: rgb(190, 190, 190);
+    border-radius: 50px;
+    outline: none;
+}
+.Dark_Mode_Button:before {  /*Rueda del boton*/
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    transition: all .9s;
+    background-color: white;
+}
+.Dark_Mode_Button:checked {
+    background-color: rgb(120, 120, 120);
+}
+.Dark_Mode_Button:checked:before {
+    transform: translate(100%);
+    transition: all .9s;
+    background-color: var(--DarkMediunBackColor);
+}
+
+/*--------------------------*/
+.navbar{
+    background-color: gray;
+    margin: 0% 0% 2% 0%; 
+    padding: 10px;
+}
+.dark-navbar{
+    background-color: black;
+    margin: 0% 0% 2% 0%; 
+    padding: 10px;
+}
+.navbar a{
+    text-decoration: none;
+    font-size: 2em;
+    color: var(--DarkTextColor);
+    float: none;
+    margin: 0% 0.5%;
+    padding: 10px;
+
+    background-color: rgb(40, 40, 40);
+    text-align: center;
+}
+.dark-navbar a{
+    text-decoration: none;
+    font-size: 2em;
+    color: var(--LighTextColor);
+    float: none;
+    margin: 0% 0.5%;
+    padding: 10px;
+
+    background-color: rgb(40, 40, 40);
+    text-align: center;
+}
+.navbar a:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+/**/
+
+aside {
+    margin: 0.25%;
+    background-color: var(--MediunBackColor);
+}
+
+/**/
+
+footer{
+    text-align: center;
+    background-color: var(--MediunBackColor);
+}
