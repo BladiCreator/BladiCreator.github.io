@@ -4,24 +4,15 @@
 }
 
 :root{
-    --DarkBackColor: rgb(20, 20, 20);
-    --DarkTextColor: white;
-    --DarkMediunBackColor: rgb(60, 60, 60);
-
-    --LightBackColor: white;
-    --LighTextColor: black;
-    --LightMediunBackColor: rgb(150, 150, 150);
+    --BackColor: white;
+    --TextColor: black;
+    --MediunBackColor: rgb(60, 60, 60);
 }
 
 body{
-    background-color: var(--LightBackColor);
-    color: var(--LighTextColor);
+    background-color: var(--BackColor);
+    color: var(--TextColor);
 }
-/* 
-.dark-mode{
-    background-color: var(--DarkBackColor);
-    color: var(--DarkTextColor);
-} */
 
 .con {
     font-size: 5em;
@@ -72,7 +63,7 @@ body{
 .Dark_Mode_Button:checked:before {
     transform: translate(100%);
     transition: all .9s;
-    background-color: var(--DarkMediunBackColor);
+    background-color: var(--MediunBackColor);
 }
 
 /*--------------------------*/
@@ -81,26 +72,10 @@ body{
     margin: 0% 0% 2% 0%; 
     padding: 10px;
 }
-.dark-navbar{
-    background-color: black;
-    margin: 0% 0% 2% 0%; 
-    padding: 10px;
-}
 .navbar a{
     text-decoration: none;
     font-size: 2em;
-    color: var(--DarkTextColor);
-    float: none;
-    margin: 0% 0.5%;
-    padding: 10px;
-
-    background-color: rgb(40, 40, 40);
-    text-align: center;
-}
-.dark-navbar a{
-    text-decoration: none;
-    font-size: 2em;
-    color: var(--LighTextColor);
+    color: var(--TextColor);
     float: none;
     margin: 0% 0.5%;
     padding: 10px;

@@ -1,19 +1,18 @@
 //Obtenemos el elemento root
-var r = document.querySelector(':root');
+const r = document.querySelector(':root');
 
-var darkMode = true;//Verifiacmos si ya esta en modo oscuro o no
+let darksMode = false;//Verificamos si ya esta en modo oscuro o no
 
 function darkMode() {
-    //var bodyElement = document.body;
-    //var navbarElement = document.getElementById("navbar")
-    
-    /*if(darkMode){
-
-    }else { }*/
-
-    r.style.setProperty('--DarkTextColor', 'black');
-    r.style.setProperty('--DarkBackColor', 'white');
-
-    //bodyElement.classList.toggle("dark-mode");
-    //navbarElement.classList.toggle("dark-navbar");
+    if(!darksMode){//Modo Oscuro
+        r.style.setProperty('--BackColor', 'rgb(20, 20, 20)');
+        r.style.setProperty('--TextColor', 'white');
+        r.style.setProperty('--MediunBackColor', 'rgb(60, 60, 60)');
+        darksMode = true;
+    }else {//Modo Normal
+        r.style.setProperty('--BackColor', 'white');
+        r.style.setProperty('--TextColor', 'black');
+        r.style.setProperty('--MediunBackColor', 'rgb(150, 150, 150)');
+        darksMode = false;
+    }
 }
