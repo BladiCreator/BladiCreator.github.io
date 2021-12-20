@@ -6,7 +6,9 @@
 :root{
     --BackColor: white;
     --TextColor: black;
-    --MediunBackColor: rgb(60, 60, 60);
+    --MediunBackColor: rgb(150, 150, 150);
+    --buttonColor: rgb(210, 210, 210);
+    --buttonColorHover: rgb(190, 190, 190);
 }
 
 body{
@@ -14,37 +16,21 @@ body{
     color: var(--TextColor);
 }
 
-.con {
-    font-size: 5em;
-    color: white;
-    float: none;
-    margin: 20% 10%;
-    padding: 50px;
-
-    background-image: linear-gradient(to top right, blue, red);
-    border-radius: 10px;
-    text-align: center;
-
-}
-.con a {
-    color: white;
-    text-decoration: none;
-}
-
-.header {
+.textHeader {
     text-align: center;
 }
 
 /*Boton de modo oscuro*/
-
-.Dark_Mode_Button{
+.Dark_Mode_Button{/*main guarda la rueda*/
     -webkit-appearance: none;
     position: relative;
     width: 80px;
     height: 40px;
-    background-color: rgb(190, 190, 190);
+    background-color: var(--BackColor);
     border-radius: 50px;
     outline: none;
+    float: right;
+    top: -67.5px;
 }
 .Dark_Mode_Button:before {  /*Rueda del boton*/
     content: "";
@@ -55,21 +41,16 @@ body{
     height: 40px;
     border-radius: 50px;
     transition: all .9s;
-    background-color: white;
+    background-color: var(--buttonColorHover);
 }
-.Dark_Mode_Button:checked {
-    background-color: rgb(120, 120, 120);
-}
-.Dark_Mode_Button:checked:before {
+.Dark_Mode_Button:checked:before {/*Rueda del boton*/
     transform: translate(100%);
     transition: all .9s;
-    background-color: var(--MediunBackColor);
 }
 
 /*--------------------------*/
-.navbar{
-    background-color: gray;
-    margin: 0% 0% 2% 0%; 
+.navbar , .header{
+    background-color: var(--MediunBackColor);
     padding: 10px;
 }
 .navbar a{
@@ -80,11 +61,12 @@ body{
     margin: 0% 0.5%;
     padding: 10px;
 
-    background-color: rgb(40, 40, 40);
+    background-color: var(--buttonColor);
     text-align: center;
 }
 .navbar a:hover {
-    background-color: rgb(80, 80, 80);
+    background-color: var(--buttonColorHover);
+
 }
 
 /**/
@@ -94,7 +76,7 @@ aside {
     background-color: var(--MediunBackColor);
 }
 
-/**/
+/*Footer*/
 
 footer{
     text-align: center;
