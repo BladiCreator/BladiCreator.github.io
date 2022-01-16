@@ -1,3 +1,5 @@
+
+/*Parte modo oscuro*/
 const r = document.querySelector(':root');//Obtenemos el elemento root
 const checkBoxVar = document.querySelector('input[class="Dark_Mode_Button"]');//Obtenemos el elemento input mediante el nombre de la clase
 
@@ -25,3 +27,21 @@ function activeDarkMode(){
         darkMode();
 	}
 }
+
+/*Parte barra de navegacion*/
+
+const botonMenu = document.querySelector('.iconbar');
+const botonMenuIcono = document.querySelector('.iconbar i');
+const navMenu = document.querySelector('.nav-ul');
+
+botonMenu.addEventListener('click', deplegarMenu);
+
+function deplegarMenu(){
+    navMenu.classList.toggle("nav-ul");
+
+    if(!navMenu.classList.contains('nav-ul')){
+        botonMenuIcono.setAttribute('class', 'fas fa-times');
+    }else{
+        botonMenuIcono.setAttribute('class', 'fas fa-bars');
+    }
+};
