@@ -1,210 +1,246 @@
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200&display=swap");
 * {
- font-family: 'Readex Pro', sans-serif;
+  font-family: "Readex Pro", sans-serif;
 }
 
-:root{
-    --BackColor: white;
-    --TextColor: black;
-    --MediunBackColor: rgb(150, 150, 150);
-    --buttonColor: rgb(210, 210, 210);
-    --buttonColorHover: rgb(190, 190, 190);
+:root {
+  --BackColor: white;
+  --TextColor: black;
+  --MediunBackColor: rgb(150, 150, 150);
+  --buttonColor: rgb(210, 210, 210);
+  --buttonColorHover: rgb(190, 190, 190);
 }
 
-body{
-    background-color: var(--BackColor);
-    color: var(--TextColor);
+body {
+  background-color: var(--BackColor);
+  color: var(--TextColor);
 }
 
-.header{
-    background-color: var(--MediunBackColor);
-    padding: 0px 10px;
+.header {
+  background-color: var(--MediunBackColor);
+  padding: 0px 10px;
 }
-.textHeader h1{
-    display: inline;
+.textHeader h1 {
+  display: inline;
 }
 
 /*Boton de modo oscuro*/
-.Dark_Mode_Button{/*main guarda la rueda*/
-    -webkit-appearance: none;
-    position: relative;
-    width: 70px;
-    height: 35px;
-    background-color: var(--BackColor);
-    border-radius: 50px;
-    outline: none;
-    float: right;
+.Dark_Mode_Button {
+  /*main guarda la rueda*/
+  -webkit-appearance: none;
+  position: relative;
+  width: 70px;
+  height: 35px;
+  background-color: var(--BackColor);
+  border-radius: 50px;
+  outline: none;
+  float: right;
 }
-.Dark_Mode_Button:before {  /*Rueda del boton*/
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 35px;
-    height: 35px;
-    border-radius: 50px;
-    transition: all .9s;
-    background-color: var(--buttonColorHover);
+.Dark_Mode_Button:before {
+  /*Rueda del boton*/
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  transition: all 0.9s;
+  background-color: var(--buttonColorHover);
 }
-.Dark_Mode_Button:checked:before {/*Rueda del boton*/
-    transform: translate(100%);
-    transition: all .9s;
+.Dark_Mode_Button:checked:before {
+  /*Rueda del boton*/
+  transform: translate(100%);
+  transition: all 0.9s;
 }
 
 #navbar {
-    background-color: var(--MediunBackColor);
-    display: block;
-    width: 100%;
-    overflow: hidden;
+  background-color: var(--MediunBackColor);
+  display: block;
+  width: 100%;
+  overflow: hidden;
 }
 
-#navbar ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-#navbar ul li{
-    display: inline-block;
+#navbar ul li {
+  display: inline-block;
 }
 
-#navbar ul li a{
-    padding: 8.5px;
-    margin: 5px;
-    font-size: 1.1em;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    float: none;
-    text-transform: uppercase;
-    position: relative;
-    transition: .2s;
+#navbar ul li a {
+  padding: 8.5px;
+  margin: 5px;
+  font-size: 1.1em;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  float: none;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.2s;
 
-    color: var(--TextColor);
-    background-color: var(--buttonColor);
+  color: var(--TextColor);
+  background-color: var(--buttonColor);
 }
-#navbar ul li a:hover{
-    background-color: var(--buttonColorHover);
+#navbar ul li a:hover {
+  background-color: var(--buttonColorHover);
 }
 
 .iconbar {
-    display: none;
-    font-size: 25px;
-    padding: 10px;
-    cursor: pointer;
-    margin-left: auto;
+  display: none;
+  font-size: 25px;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: auto;
 }
 
-hr{
-    color: var(--TextColor);
+hr {
+  color: var(--TextColor);
 }
 
-#content{
-    background-color: var(--MediunBackColor);
-    position: relative;
-    margin-left: auto;
-    padding: 0;
-    max-width: 100%;
+#content {
+  background-color: var(--MediunBackColor);
+  position: relative;
+  margin-left: auto;
+  padding: 0;
+  max-width: 100%;
+}
+
+table,
+td {
+  width: 600px;
+  padding: 5px;
+  border-radius: 2.5px;
+}
+
+#columna1 {
+  width: 50px;
+}
+
+thead,
+tfoot {
+  background-color: var(--MediunBackColor);
+}
+
+#comun {
+  background-color: rgb(150, 150, 150);
+}
+
+#inusual {
+  background-color: rgb(120, 175, 120);
+}
+
+#raro {
+  background-color: rgb(100, 100, 250);
+}
+
+#heroico {
+  background-color: rgb(250, 120, 120);
+}
+
+/*Area del mapa*/
+
+#map {
+  height: 450px;
+  width: 450px;
 }
 
 /*Aside(anuncio)*/
 
 #content aside {
-    margin: 0.25%;
-    background-color: var(--MediunBackColor);
+  margin: 0.25%;
+  background-color: var(--MediunBackColor);
 }
 
 /*Footer*/
 
-footer{
-    clear: both;
-    width : 100%;
-    text-align: center;
-    background-color: var(--MediunBackColor);
+footer {
+  clear: both;
+  width: 100%;
+  text-align: center;
+  background-color: var(--MediunBackColor);
 }
 
 /*Sistemas reponsive*/
 
-@media screen and (max-width: 820px){
+@media screen and (max-width: 820px) {
+  #content {
+    padding: 0;
+    max-width: 100%;
+  }
 
-    #content {
-        padding: 0;
-        max-width: 100%;
-    }
+  #content header {
+    padding: 0;
+  }
 
-    #content header{
-        padding: 0;
-    }
+  #content aside {
+    clear: both;
+    padding: 5%;
+  }
 
-    #content aside{
-        clear: both;
-        padding: 5%;
-        width: 100%;
-    }
-
-    #content footer {
-        border-radius: 0;
-        width: 100%;
-        padding: 0;
-    }
+  #content footer {
+    width: 100%;
+    padding: 0;
+  }
 }
 
 /*Resolucion movil*/
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
+  .Dark_Mode_Button {
+    /*main guarda la rueda*/
+    width: 60px;
+    height: 30px;
+    top: 0;
+    float: right;
+  }
+  .Dark_Mode_Button:before {
+    /*Rueda del boton*/
+    width: 30px;
+    height: 30px;
+  }
+  .textHeader h1 {
+    font-size: 30px;
+  }
 
-    .Dark_Mode_Button{/*main guarda la rueda*/
-        width: 60px;
-        height: 30px;
-        top: 0;
-        float: right;
-    }
-    .Dark_Mode_Button:before {  /*Rueda del boton*/
-        width: 30px;
-        height: 30px;
-    }
-    .textHeader h1{
-        text-align: left;
-        font-size: 30px;
-    }
+  .iconbar {
+    display: block;
+    text-align: right;
+  }
 
-    .iconbar{
-        display: block;
-        text-align: right;
-    }
+  .nav-ul {
+    position: fixed;
+    width: 100%;
+    height: 0;
+    overflow: scroll;
+  }
 
-    .nav-ul{
-        position: fixed;
-        width: 100%;
-        height: 0;
-        transition: .3 ease-out;
-        overflow: scroll;
-    }
+  #navbar ul li {
+    display: block;
+    text-align: center;
+  }
+  #navbar ul li a {
+    font-size: 20px;
+    width: 100%;
+  }
+  #navbar ul li a:hover {
+    background-color: var(--buttonColorHover);
+  }
 
-    #navbar ul li{
-        display: block;
-        text-align: center;
-    }
-    #navbar ul li a{
-        font-size: 20px;
-        width: 100%;
-        
-    }
-    #navbar ul li a:hover{
-        background-color: var(--buttonColorHover);
-    }
-    
-    #content {
-        padding: 10px;
-        width: auto;    
-    }
-    
-    #content aside{
-        padding: 0;
-        width: auto;
-    }
-    
-    #content footer {
-        width: auto;
-    }
+  #content {
+    padding: 10px;
+    width: auto;
+  }
 
+  #content aside {
+    padding: 0;
+    width: auto;
+  }
+
+  #content footer {
+    width: auto;
+  }
 }
