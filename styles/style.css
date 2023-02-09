@@ -3,6 +3,10 @@
   font-family: "Readex Pro", sans-serif;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --BackColor: white;
   --TextColor: black;
@@ -18,7 +22,7 @@ body {
 
 .header {
   background-color: var(--MediunBackColor);
-  padding: 0px 10px;
+  /*padding: 0px 10px;*/
 }
 .textHeader h1 {
   display: inline;
@@ -45,13 +49,13 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 50px;
-  transition: all 0.9s;
+  transition: 0.4s;
   background-color: var(--buttonColorHover);
 }
 .Dark_Mode_Button:checked:before {
   /*Rueda del boton*/
   transform: translate(100%);
-  transition: all 0.9s;
+  transition: 0.4s;
 }
 
 #navbar {
@@ -69,6 +73,11 @@ body {
 
 #navbar ul li {
   display: inline-block;
+}
+
+.li-input {
+  float: right;
+  margin: 2.5px 10px 0 0;
 }
 
 #navbar ul li a {
@@ -92,61 +101,61 @@ body {
 
 .iconbar {
   display: none;
-  font-size: 25px;
-  padding: 10px;
+  font-size: 32px;
+  padding: 7.5px;
   cursor: pointer;
   margin-left: auto;
+}
+
+#navbar-mobile {
+  display: none;
 }
 
 hr {
   color: var(--TextColor);
 }
 
+/*Capa mas baja*/
+
 #content {
   background-color: var(--MediunBackColor);
-  position: relative;
+  display: flex;
+  position: initial;
   margin-left: auto;
   padding: 0;
-  max-width: 100%;
+  height: 100vh;
 }
 
-table,
-td {
-  width: 600px;
-  padding: 5px;
-  border-radius: 2.5px;
+/*Divisiones de las ventanas*/
+
+#eventsList {
+  float: left;
+  width: 25%;
+  height: 100%;
 }
 
-#columna1 {
-  width: 50px;
+#mapAndDescription {
+  float: center;
+  width: 50%;
+  height: 100%;
+  margin: 10px;
 }
 
-thead,
-tfoot {
-  background-color: var(--MediunBackColor);
-}
-
-#comun {
-  background-color: rgb(150, 150, 150);
-}
-
-#inusual {
-  background-color: rgb(120, 175, 120);
-}
-
-#raro {
-  background-color: rgb(100, 100, 250);
-}
-
-#heroico {
-  background-color: rgb(250, 120, 120);
+#friendList {
+  clear: left;
+  width: 25%;
+  height: 100%;
 }
 
 /*Area del mapa*/
 
 #map {
-  height: 450px;
-  width: 450px;
+  height: 75%;
+  width: 100%;
+}
+
+#map::backdrop {
+  color: #448;
 }
 
 /*Aside(anuncio)*/
@@ -165,12 +174,98 @@ footer {
   background-color: var(--MediunBackColor);
 }
 
+/*barra de navegacion entre partes del content*/
+
+#navbar-mobile ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar-mobile ul li {
+  float: left;
+}
+
+#navbar-mobile ul li a {
+  /*padding: 8.5px;
+  margin: 5px;
+  font-size: 1.1em;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  float: none;
+  text-transform: uppercase;
+  position: relative;*/
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+
+  color: var(--TextColor);
+  background-color: var(--buttonColor);
+}
+
 /*Sistemas reponsive*/
 
 @media screen and (max-width: 820px) {
+  html {
+    height: auto;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  hr{
+    display: none;
+  }
+
+  .textHeader h1 {
+    display: none;
+  }
+
   #content {
     padding: 0;
     max-width: 100%;
+    /*display: block;*/
+  }
+
+  /*barra de navegacion entre partes del content*/
+
+  #navbar-mobile {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+  }
+
+  /*Divisiones de las ventanas*/
+
+  #eventsList {
+    display: none;
+    /*float: left;
+    width: 25%;
+    height: 100%;*/
+  }
+
+  #mapAndDescription {
+    display: contents;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  #map {
+    height: 100%; /*Si se modifica este porcentaje quedaran huecos*/
+    width: 100%;
+  }
+  #eventDescription {
+    display: none;
+  }
+
+  #friendList {
+    display: none;
+    clear: left;
+    width: 25%;
+    height: 100%;
   }
 
   #content header {
@@ -194,8 +289,7 @@ footer {
     /*main guarda la rueda*/
     width: 60px;
     height: 30px;
-    top: 0;
-    float: right;
+    margin: 2.5px 0 10px 10px;
   }
   .Dark_Mode_Button:before {
     /*Rueda del boton*/
@@ -208,7 +302,7 @@ footer {
 
   .iconbar {
     display: block;
-    text-align: right;
+    text-align: left;
   }
 
   .nav-ul {
@@ -224,14 +318,14 @@ footer {
   }
   #navbar ul li a {
     font-size: 20px;
-    width: 100%;
+    width: -webkit-fill-available;
   }
   #navbar ul li a:hover {
     background-color: var(--buttonColorHover);
   }
 
   #content {
-    padding: 10px;
+    /*padding: 10px;*/
     width: auto;
   }
 
