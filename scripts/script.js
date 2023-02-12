@@ -6,6 +6,7 @@ let matched = window.matchMedia("(prefers-color-scheme: dark)").matches; //Detec
 
 //Activa el Modo oscuro ejecutando la funcion automaticamente
 activeDarkMode();
+activarModoOscuroManual();
 
 function darkMode() {
   if (checkBoxVar.checked) {
@@ -25,10 +26,6 @@ function darkMode() {
   }
 }
 
-function activarModoOscuroManual() {
-  localStorage.setItem("modoOscuroManual", checkBoxVar.checked);
-}
-
 function activeDarkMode() {
   let modoOscuroManual = localStorage.getItem("modoOscuroManual");
   if (modoOscuroManual == null) {
@@ -40,6 +37,13 @@ function activeDarkMode() {
     checkBoxVar.checked = modoOscuroManual == "true" ? true : false; //Activa/Desactiva el modo oscuro
   }
   darkMode();
+}
+
+function activarModoOscuroManual() {
+  localStorage.setItem("modoOscuroManual", checkBoxVar.checked);
+  //Si el modo oscuro del navegador coincide con el del boton, automaticamente borrará los archivos para que se sincronize con el modo del navegador
+  if (matched == checkBoxVar.checked)
+    localStorage.removeItem("modoOscuroManual");
 }
 
 /*Parte barra de navegacion*/

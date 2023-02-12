@@ -27,8 +27,7 @@ if (navigator.geolocation) {
       attribution: "© OpenStreetMap",
     }).addTo(map);
 
-    //TODO: Crear un punto donde está el usuario
-    //TODO: Crear un filtro que muestre los eventos desde un determinado rango
+    //TODO: Mejorar el punto donde está el usuario
 
     const intervalID = setInterval(cargadorDeEventos, 10000);
 
@@ -54,7 +53,7 @@ if (navigator.geolocation) {
   });
 }
 
-//TODO:Se eliminará el parametro colors y en vez de crear un circulo creará un icono
+//TODO:No se eliminará el parametro colors y en vez de crear un circulo creará un icono, colo cambiará segun el estado del evento
 function crearEvento(latitud, longitud, radiu, colors, map) {
   L.circle([latitud, longitud, 1], {
     radius: radiu,
