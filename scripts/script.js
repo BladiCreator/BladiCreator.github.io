@@ -109,7 +109,7 @@ function updateOptionSelected() {
 window.addEventListener("resize", normalMode);
 
 function normalMode() {
-  if (window.innerWidth > 600) {
+  if (window.innerWidth > 820) {
     eventsListElement.style.display = "block";
     mapAndDescriptionElement.style.display = "block";
     friendListElement.style.display = "block";
