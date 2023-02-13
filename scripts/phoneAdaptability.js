@@ -5,14 +5,17 @@ const navbarMobileElement = document.querySelector("#navbar-mobile");
 let height = 0;
 let navbarHeight = navbarElement.offsetHeight;
 let navbarMobileHeight = navbarMobileElement.offsetHeight;
-window.onload = resizeContent
+window.onload = resizeContent;
 window.addEventListener("resize", resizeContent);
 function resizeContent() {
   if (window.innerWidth <= 820) {
-    navbarHeight = navbarElement.offsetHeight;
-    navbarMobileHeight = navbarMobileElement.offsetHeight;
-    
-    height = String(window.innerHeight - (navbarHeight + navbarMobileHeight));
-    contentElement.style.height = height + "px";
+    do {
+      console.log(navbarHeight);
+      navbarHeight = navbarElement.offsetHeight;
+      navbarMobileHeight = navbarMobileElement.offsetHeight;
+
+      height = String(window.innerHeight - (navbarHeight + navbarMobileHeight));
+      contentElement.style.height = height + "px";
+    } while (navbarHeight < 20);
   } else contentElement.style.removeProperty("height");
 }
