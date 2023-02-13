@@ -9,13 +9,11 @@ window.onload = resizeContent;
 window.addEventListener("resize", resizeContent);
 function resizeContent() {
   if (window.innerWidth <= 820) {
-    do {
-      console.log(navbarHeight);
-      navbarHeight = navbarElement.offsetHeight;
-      navbarMobileHeight = navbarMobileElement.offsetHeight;
+    console.log(navbarHeight);
+    navbarHeight = navbarElement.offsetHeight;
+    navbarMobileHeight = navbarMobileElement.offsetHeight;
 
-      height = String(window.innerHeight - (navbarHeight + navbarMobileHeight));
-      contentElement.style.height = height + "px";
-    } while (navbarHeight < 20);
+    height = String(window.innerHeight - (navbarHeight + navbarMobileHeight));
+    contentElement.style.height = height + "px";
   } else contentElement.style.removeProperty("height");
 }

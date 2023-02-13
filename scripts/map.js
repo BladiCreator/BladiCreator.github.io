@@ -38,7 +38,7 @@ if (navigator.geolocation) {
     }).addTo(map);
 
     //TODO: Mejorar el punto donde está el usuario
-
+    //1 second = 1000 milliseconds.
     const intervalID = setInterval(cargadorDeEventos, 10000);
 
     //Muestra los primeros eventos al inicio
