@@ -15,7 +15,8 @@ function darkMode() {
     r.style.setProperty("--TextColor", "white");
     r.style.setProperty("--MediunBackColor", "rgb(60, 60, 60)");
     r.style.setProperty("--buttonColor", "rgb(40, 40, 40)");
-    r.style.setProperty("--buttonColorHover", "rgb(80, 80, 80)");
+    r.style.setProperty("--buttonColorHover", "rgb(85, 85, 85)");
+    r.style.setProperty("--backgroundHeaderColor", "rgb(70, 70, 70)");
   } else {
     //Modo Normal
     r.style.setProperty("--BackColor", "white");
@@ -23,6 +24,7 @@ function darkMode() {
     r.style.setProperty("--MediunBackColor", "rgb(150, 150, 150)");
     r.style.setProperty("--buttonColor", "rgb(210, 210, 210)");
     r.style.setProperty("--buttonColorHover", "rgb(190, 190, 190)");
+    r.style.setProperty("--backgroundHeaderColor", "rgb(170, 170, 170)");
   }
 }
 
@@ -61,5 +63,59 @@ function deplegarMenu() {
     botonMenuIcono.setAttribute("class", "fas fa-times");
   } else {
     botonMenuIcono.setAttribute("class", "fas fa-bars");
+  }
+}
+
+/*Barra de navegacion movil*/
+const eventListBoton = document.querySelector("#eventListBoton");
+const mapAndDescriptionBoton = document.querySelector("#mapBoton");
+const friendListBoton = document.querySelector("#friendListBoton");
+
+const eventsListElement = document.querySelector("#eventsList");
+const mapAndDescriptionElement = document.querySelector("#mapAndDescription");
+const friendListElement = document.querySelector("#friendList");
+
+let eventsListElementActivated = "";
+let mapAndDescriptionElementActivated = "";
+let friendListElementActivated = "";
+
+eventListBoton.addEventListener("click", () => {
+  eventsListElementActivated = "block";
+  mapAndDescriptionElementActivated = "none";
+  friendListElementActivated = "none";
+  updateOptionSelected();
+});
+
+mapAndDescriptionBoton.addEventListener("click", () => {
+  eventsListElementActivated = "none";
+  mapAndDescriptionElementActivated = "block";
+  friendListElementActivated = "none";
+  updateOptionSelected();
+});
+
+friendListBoton.addEventListener("click", () => {
+  eventsListElementActivated = "none";
+  mapAndDescriptionElementActivated = "none";
+  friendListElementActivated = "block";
+  updateOptionSelected();
+});
+
+function updateOptionSelected() {
+  eventsListElement.style.display = eventsListElementActivated;
+  mapAndDescriptionElement.style.display = mapAndDescriptionElementActivated;
+  friendListElement.style.display = friendListElementActivated;
+}
+
+window.addEventListener("resize", normalMode);
+
+function normalMode() {
+  if (window.innerWidth > 600) {
+    eventsListElement.style.display = "block";
+    mapAndDescriptionElement.style.display = "block";
+    friendListElement.style.display = "block";
+  } else {
+    eventsListElement.style.display = eventsListElementActivated;
+    mapAndDescriptionElement.style.display = mapAndDescriptionElementActivated;
+    friendListElement.style.display = friendListElementActivated;
   }
 }

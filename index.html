@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MapFlip</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
@@ -25,6 +25,8 @@
       integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
       crossorigin=""
     ></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
 
   <body>
@@ -50,25 +52,24 @@
             />
           </li>
         </ul>
-        
       </nav>
     </header>
 
-    <hr>
     <!--Contenido de la página-->
 
     <div id="content">
       <div id="eventsList">
-        <article>
-          <header>
-            <h3>Eventos</h3>
-          </header>
-
-          <img class="event-image" src="" alt="Imagen del evento" />
-
-          <p>Publico/Privado</p>
-          <h4>Nombre Evento</h4>
-          <section>Tipo de evento</section>
+        <article class="forecast">
+          <h1>Eventos</h1>
+          <div class="eventListCreator"></div>
+          <!--<article class="day-forecast">
+            <h2 id="event-name">Nombre Evento</h2>
+            <div class="event-presentation">
+              <img id="event-icon" src="Icons/GradientSquare.png" alt="Imagen del evento"/>
+              <p id="event-privacity">Publico/Privado</p>
+            </div>
+            <p id="event-type">Tipo de evento</p>
+          </article>-->
         </article>
 
         <aside>
@@ -77,32 +78,39 @@
       </div>
 
       <div id="mapAndDescription">
+        
         <div id="map"></div>
+        <!--<input type="button" value="+" id="createEventButton"">-->
 
         <div id="eventDescription">
           <article>
             <header>
               <h3>Descripcion</h3>
             </header>
-
             <h4>Nombre Evento</h4>
-
             <p>Descripcion</p>
           </article>
         </div>
       </div>
 
       <div id="friendList">
-        <article>
-          <header>
-            <h3>Amigos</h3>
-          </header>
-
-          <img class="profile-image" src="" alt="Imagen del usuario" />
-
-          <p>Conectado/Desconectado</p>
-          <h4>Nombre Evento</h4>
-          <section>Membresía</section>
+        <article class="forecast scrollView">
+          <h1>Amigos</h1>
+          <article class="day-forecast">
+            <h2 id="event-name">Nombre Amigo</h2>
+            <div class="event-presentation">
+              <img
+                id="event-icon"
+                src="Icons/GradientSquare.png"
+                alt="Imagen del evento"
+              />
+              <p id="event-privacity">Conectado/Desconectado</p>
+            </div>
+            <div class="event-presentation">
+              <p>Participando evento</p>
+              <p id="membership-text">Membresía</p>
+            </div>
+          </article>
         </article>
 
         <aside>
@@ -112,11 +120,9 @@
     </div>
     <footer>
       <nav id="navbar-mobile">
-        <ul>
-          <li><a href="index.html">LE</a></li>
-          <li><a href="index.html">M</a></li>
-          <li><a href="index.html">LA</a></li>
-        </ul>
+        <input type="button" value="LE" id="eventListBoton" />
+        <input type="button" value="M" id="mapBoton" />
+        <input type="button" value="LA" id="friendListBoton" />
       </nav>
     </footer>
   </body>

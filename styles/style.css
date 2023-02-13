@@ -8,21 +8,33 @@
 }
 
 :root {
+  --borderRadiusSize: 2.5px;
   --BackColor: white;
   --TextColor: black;
   --MediunBackColor: rgb(150, 150, 150);
   --buttonColor: rgb(210, 210, 210);
   --buttonColorHover: rgb(190, 190, 190);
+  --backgroundHeaderColor: rgb(170, 170, 170);
 }
 
 body {
-  background-color: var(--BackColor);
+  background-color: var(--MediunBackColor);/*Cambiar este color para buscar huecos*/
   color: var(--TextColor);
+  overflow: hidden;
+  display: block;
+}
+
+input{
+  outline: none;
+  border-width: 0;
 }
 
 .header {
-  background-color: var(--MediunBackColor);
+  background-color: var(--backgroundHeaderColor);
   /*padding: 0px 10px;*/
+}
+.textHeader {
+  padding: 2.5px;
 }
 .textHeader h1 {
   display: inline;
@@ -57,9 +69,25 @@ body {
   transform: translate(100%);
   transition: 0.4s;
 }
+/*TODO:hacer que de alguna manera el boton de crear evento esté por encima del mapa*/
+#createEventButton{
+  width: 55px;
+  height: 55px;
+  background: rgb(221, 62, 229);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 40px;
+  box-shadow: 0px 2px 5px #535353a7;
+  position: fixed;
+  right: 200px;
+  bottom: 290px;
+  cursor: pointer;
+}
 
 #navbar {
-  background-color: var(--MediunBackColor);
   display: block;
   width: 100%;
   overflow: hidden;
@@ -91,6 +119,7 @@ body {
   text-transform: uppercase;
   position: relative;
   transition: 0.2s;
+  border-radius: var(--borderRadiusSize);
 
   color: var(--TextColor);
   background-color: var(--buttonColor);
@@ -123,25 +152,88 @@ hr {
   position: initial;
   margin-left: auto;
   padding: 0;
-  height: 100vh;
+  height: 84vh;
 }
 
 /*Divisiones de las ventanas*/
 
 #eventsList {
+  display: block;
   float: left;
   width: 25%;
   height: 100%;
 }
 
+.forecast {
+  height: 60%;
+  margin: 0 5px 0 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  /*TODO:Añadir un scroll personalizado*/
+}
+
+.forecast > h1,
+.day-forecast {
+  margin: 0.25rem;
+  padding: 0.15rem;
+  font-size: 1.2rem;
+  background-color: var(--buttonColor);
+  border-radius: var(--borderRadiusSize);
+}
+.day-forecast{
+  cursor: pointer;
+}
+.day-forecast:hover {
+  background-color: var(--buttonColorHover);
+}
+.event-presentation {
+  display: inline-block;
+  width: 100%;
+}
+.event-presentation img {
+  float: left;
+}
+.event-presentation p {
+  float: left;
+  text-align: left;
+  display: block;
+}
+#membership-text{
+  background-color: var(--MediunBackColor);
+  border-radius: var(--borderRadiusSize);
+  float: right;
+  padding: 0.15rem;
+}
+.day-forecast > h2,
+.day-forecast p {
+  margin: 0.2rem;
+  font-size: 1rem;
+}
+.day-forecast img {
+  border-radius: 100%;
+  align-items: start;
+  max-width: 50px;
+  max-height: 50px;
+}
+
 #mapAndDescription {
+  display: block;
   float: center;
   width: 50%;
   height: 100%;
-  margin: 10px;
+}
+#eventDescription{
+  padding: 5px 0;
+}
+#eventDescription h3, h4, p{
+  margin: 0.1rem;
+  padding: 0.05rem;
 }
 
 #friendList {
+  display: block;
   clear: left;
   width: 25%;
   height: 100%;
@@ -150,8 +242,10 @@ hr {
 /*Area del mapa*/
 
 #map {
+  position: static;
   height: 75%;
   width: 100%;
+  border-radius: var(--borderRadiusSize);
 }
 
 #map::backdrop {
@@ -176,51 +270,37 @@ footer {
 
 /*barra de navegacion entre partes del content*/
 
-#navbar-mobile ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-#navbar-mobile ul li {
-  float: left;
-}
-
-#navbar-mobile ul li a {
-  /*padding: 8.5px;
-  margin: 5px;
-  font-size: 1.1em;
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  float: none;
-  text-transform: uppercase;
-  position: relative;*/
-  display: block;
+#navbar-mobile input {
+  -webkit-appearance: none;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
+  margin: 2px 0;
 
-  color: var(--TextColor);
+  color: var(--TextColor); 
   background-color: var(--buttonColor);
 }
 
 /*Sistemas reponsive*/
 
-@media screen and (max-width: 820px) {
-  html {
-    height: auto;
-  }
-
+@media screen and (max-width: 940px) {
   body {
     margin: 0;
   }
+  #content {
+    padding: 2.5px 0;
+  }
+}
 
-  hr{
+@media screen and (max-width: 820px) {
+  a hr {
     display: none;
   }
 
-  .textHeader h1 {
+  #content {
+    padding: 0;
+  }
+
+  .textHeader{
     display: none;
   }
 
@@ -228,13 +308,14 @@ footer {
     padding: 0;
     max-width: 100%;
     /*display: block;*/
+    height: 80.8vh;
   }
 
   /*barra de navegacion entre partes del content*/
 
-  #navbar-mobile {
+  #navbar-mobile{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: stretch;
   }
 
@@ -242,21 +323,28 @@ footer {
 
   #eventsList {
     display: none;
-    /*float: left;
-    width: 25%;
-    height: 100%;*/
+    clear: right;
+    width: 100%;
+    height: 100%;
+  }
+  #eventsList .forecast{
+    height: 100%;
+  }
+  #eventsList aside{
+    display: none;
   }
 
   #mapAndDescription {
-    display: contents;
-    height: 100%;
+    display: block;
     width: 100%;
     margin: 0;
   }
   #map {
     height: 100%; /*Si se modifica este porcentaje quedaran huecos*/
     width: 100%;
+    border-radius: 0;
   }
+  /*Hacer que la descripcion tenga un texto mas pequeño*/
   #eventDescription {
     display: none;
   }
@@ -264,8 +352,14 @@ footer {
   #friendList {
     display: none;
     clear: left;
-    width: 25%;
+    width: 100%;
     height: 100%;
+  }
+  #friendList .forecast{
+    height: 100%;
+  }
+  #friendList aside{
+    display: none;
   }
 
   #content header {
@@ -309,7 +403,7 @@ footer {
     position: fixed;
     width: 100%;
     height: 0;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 
   #navbar ul li {

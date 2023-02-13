@@ -1,4 +1,14 @@
 /*URL para la documentacion de Leaflet https://leafletjs.com/reference.html#map-property*/
+const imageDirectory = "./Icons/";
+//Variables para testear
+let imageNameArray = [
+  "GradientSquare.png",
+  "2DView_UI_Icon.png",
+  "3DView_UI_Icon.png",
+  "Properties_UI_Icon.png",
+];
+let eventTypeArray = ["Patinaje", "Ciclismo", "Danza","Baloncesto"];
+
 let latitud;
 let longitud = -0.09;
 let altura = 15;
@@ -37,6 +47,7 @@ if (navigator.geolocation) {
     function cargadorDeEventos() {
       //Elimina los eventos cada vez que se reinicia(Limpia el mapa)
       clearMap(map);
+      clearEventElementList();
 
       simularEventos(map);
     }
@@ -93,6 +104,23 @@ function simularEventos(map) {
         "#FF0E0E94",
         map
       );
+      let eventName = latitudRandomTotal + " " + longitudRandomTotal;
+      let eventPrivacity =
+        Math.round(Math.random(2) + 1) == 1 ? "Publico" : "Privado";
+      let randomIndex = Math.round(Math.random() * (imageNameArray.length - 1))
+      let eventType =
+        eventTypeArray[randomIndex];
+      let imageName =
+        imageNameArray[randomIndex];
+      let eventImagen = imageDirectory + imageName;
+      let eventAltImg = "Una imagen";
+      createEventElement(
+        eventName,
+        eventPrivacity,
+        eventType,
+        eventImagen,
+        eventAltImg
+      );
     }
   }
 }
@@ -129,4 +157,48 @@ function globalDistanceCalculator(lat1, lon1, lat2, lon2) {
       Math.pow(Math.sin(diferenciaEntreLongitudes / 2.0), 2);
   let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return RADIO_TIERRA_EN_KILOMETROS * c;
+}
+
+const eventListCreator = document.querySelector(".eventListCreator");
+function createEventElement(
+  name = "Nombre Evento",
+  privacity = "Publico/Privado",
+  type = "Tipo de evento",
+  img = "Icons/GradientSquare.png",
+  alt = "Imagen del evento"
+) {
+  const article = document.createElement("article");
+  article.className = "day-forecast";
+  eventListCreator.append(article);
+
+  const h2 = document.createElement("h2");
+  h2.id = "event-name";
+  h2.textContent = name;
+  article.append(h2);
+
+  const divEventPresentation = document.createElement("div");
+  divEventPresentation.className = "event-presentation";
+  article.append(divEventPresentation);
+
+  const imgElement = document.createElement("img");
+  imgElement.id = "event-icon";
+  imgElement.src = img;
+  imgElement.alt = alt;
+  divEventPresentation.append(imgElement);
+
+  const pEventPrivacity = document.createElement("p");
+  pEventPrivacity.id = "event-privacity";
+  pEventPrivacity.textContent = privacity;
+  divEventPresentation.append(pEventPrivacity);
+
+  const pEventType = document.createElement("p");
+  pEventType.id = "event-type";
+  pEventType.textContent = type;
+  article.append(pEventType);
+
+  return Element;
+}
+
+function clearEventElementList(){
+  eventListCreator.innerHTML = "";
 }
