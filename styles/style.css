@@ -6,7 +6,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
-
+/*Si modifica aqui tambien obligatorio en el JS*/
 :root {
   --borderRadiusSize: 2.5px;
   --BackColor: white;
@@ -15,18 +15,30 @@
   --buttonColor: rgb(210, 210, 210);
   --buttonColorHover: rgb(190, 190, 190);
   --backgroundHeaderColor: rgb(170, 170, 170);
+  --imgIconColor: invert(90%);
+  /*Staticos(No deben ser accesible desde JavaScripts)*/
+  --imgGreenButtonIconColor: invert(80%) sepia(35%) saturate(811%) hue-rotate(75deg)
+  brightness(250%) contrast(160%);
 }
 
 body {
-  background-color: var(--MediunBackColor);/*Cambiar este color para buscar huecos*/
+  background-color: var(
+    --MediunBackColor
+  ); /*Cambiar este color para buscar huecos*/
   color: var(--TextColor);
   overflow: hidden;
   display: block;
 }
 
-input{
+input, button {
   outline: none;
   border-width: 0;
+}
+
+.menuIcon,.closeIcon {
+  /*Para cambiar los colores de la imagen*/
+  filter: var(--imgIconColor);
+  height: 24px;
 }
 
 .header {
@@ -70,7 +82,7 @@ input{
   transition: 0.4s;
 }
 /*TODO:hacer que de alguna manera el boton de crear evento esté por encima del mapa*/
-#createEventButton{
+#createEventButton {
   width: 55px;
   height: 55px;
   background: rgb(221, 62, 229);
@@ -182,7 +194,7 @@ hr {
   background-color: var(--buttonColor);
   border-radius: var(--borderRadiusSize);
 }
-.day-forecast{
+.day-forecast {
   cursor: pointer;
 }
 .day-forecast:hover {
@@ -200,7 +212,7 @@ hr {
   text-align: left;
   display: block;
 }
-#membership-text{
+#membership-text {
   background-color: var(--MediunBackColor);
   border-radius: var(--borderRadiusSize);
   float: right;
@@ -224,10 +236,12 @@ hr {
   width: 50%;
   height: 100%;
 }
-#eventDescription{
+#eventDescription {
   padding: 5px 0;
 }
-#eventDescription h3, h4, p{
+#eventDescription h3,
+h4,
+p {
   margin: 0.1rem;
   padding: 0.05rem;
 }
@@ -270,14 +284,27 @@ footer {
 
 /*barra de navegacion entre partes del content*/
 
-#navbar-mobile input {
+#navbar-mobile button,input {
   -webkit-appearance: none;
   text-align: center;
-  padding: 14px 16px;
+  padding: 4px 10px 0px 10px;
   margin: 2px 0;
 
-  color: var(--TextColor); 
+  cursor: pointer;
+  color: var(--TextColor);
   background-color: var(--buttonColor);
+}
+#navbar-mobile button > img {
+  height: 32px;
+}
+.listIcon{
+  filter: var(--imgIconColor);
+}
+.mapIcon{
+  filter: var(--imgGreenButtonIconColor);
+}
+.friendsIcon{
+  filter: var(--imgIconColor);
 }
 
 /*Sistemas reponsive*/
@@ -300,7 +327,7 @@ footer {
     padding: 0;
   }
 
-  .textHeader{
+  .textHeader {
     display: none;
   }
 
@@ -313,7 +340,7 @@ footer {
 
   /*barra de navegacion entre partes del content*/
 
-  #navbar-mobile{
+  #navbar-mobile {
     display: flex;
     justify-content: space-evenly;
     align-items: stretch;
@@ -327,10 +354,10 @@ footer {
     width: 100%;
     height: 100%;
   }
-  #eventsList .forecast{
+  #eventsList .forecast {
     height: 100%;
   }
-  #eventsList aside{
+  #eventsList aside {
     display: none;
   }
 
@@ -355,10 +382,10 @@ footer {
     width: 100%;
     height: 100%;
   }
-  #friendList .forecast{
+  #friendList .forecast {
     height: 100%;
   }
-  #friendList aside{
+  #friendList aside {
     display: none;
   }
 

@@ -9,10 +9,9 @@ window.onload = resizeContent;
 window.addEventListener("resize", resizeContent);
 function resizeContent() {
   if (window.innerWidth <= 820) {
-    console.log(navbarHeight);
     navbarHeight = navbarElement.offsetHeight;
     navbarMobileHeight = navbarMobileElement.offsetHeight;
-
+    console.log(navbarHeight);
     height = String(window.innerHeight - (navbarHeight + navbarMobileHeight));
     contentElement.style.height = height + "px";
   } else contentElement.style.removeProperty("height");

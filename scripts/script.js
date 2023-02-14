@@ -8,6 +8,7 @@ let matched = window.matchMedia("(prefers-color-scheme: dark)").matches; //Detec
 activeDarkMode();
 activarModoOscuroManual();
 
+/*Si modifica aqui tambien obligatorio en el CSS*/
 function darkMode() {
   if (checkBoxVar.checked) {
     //Modo Oscuro
@@ -17,6 +18,7 @@ function darkMode() {
     r.style.setProperty("--buttonColor", "rgb(40, 40, 40)");
     r.style.setProperty("--buttonColorHover", "rgb(85, 85, 85)");
     r.style.setProperty("--backgroundHeaderColor", "rgb(70, 70, 70)");
+    r.style.setProperty("--imgIconColor", "invert(10%)");
   } else {
     //Modo Normal
     r.style.setProperty("--BackColor", "white");
@@ -25,6 +27,7 @@ function darkMode() {
     r.style.setProperty("--buttonColor", "rgb(210, 210, 210)");
     r.style.setProperty("--buttonColorHover", "rgb(190, 190, 190)");
     r.style.setProperty("--backgroundHeaderColor", "rgb(170, 170, 170)");
+    r.style.setProperty("--imgIconColor", "invert(90%)");
   }
 }
 
@@ -51,7 +54,7 @@ function activarModoOscuroManual() {
 /*Parte barra de navegacion*/
 
 const botonMenu = document.querySelector(".iconbar");
-const botonMenuIcono = document.querySelector(".iconbar i");
+const botonMenuIcono = document.querySelector(".iconbar img");
 const navMenu = document.querySelector(".nav-ul");
 
 botonMenu.addEventListener("click", deplegarMenu);
@@ -60,9 +63,11 @@ function deplegarMenu() {
   navMenu.classList.toggle("nav-ul");
 
   if (!navMenu.classList.contains("nav-ul")) {
-    botonMenuIcono.setAttribute("class", "fas fa-times");
+    botonMenuIcono.setAttribute("class", "closeIcon");
+    botonMenuIcono.setAttribute("src", "Icons/GUI/Close-256.png");
   } else {
-    botonMenuIcono.setAttribute("class", "fas fa-bars");
+    botonMenuIcono.setAttribute("class", "menuIcon");
+    botonMenuIcono.setAttribute("src", "Icons/GUI/Row-256.png");
   }
 }
 
@@ -70,6 +75,10 @@ function deplegarMenu() {
 const eventListBoton = document.querySelector("#eventListBoton");
 const mapAndDescriptionBoton = document.querySelector("#mapBoton");
 const friendListBoton = document.querySelector("#friendListBoton");
+
+const eventListIcon = document.querySelector(".listIcon");
+const mapIcon = document.querySelector(".mapIcon");
+const friendsIcon = document.querySelector(".friendsIcon");
 
 const eventsListElement = document.querySelector("#eventsList");
 const mapAndDescriptionElement = document.querySelector("#mapAndDescription");
@@ -80,6 +89,9 @@ let mapAndDescriptionElementActivated = "";
 let friendListElementActivated = "";
 
 eventListBoton.addEventListener("click", () => {
+  eventListIcon.style.filter = "var(--imgGreenButtonIconColor)";
+  mapIcon.style.filter = "var(--imgIconColor)";
+  friendsIcon.style.filter = "var(--imgIconColor)";
   eventsListElementActivated = "block";
   mapAndDescriptionElementActivated = "none";
   friendListElementActivated = "none";
@@ -87,6 +99,9 @@ eventListBoton.addEventListener("click", () => {
 });
 
 mapAndDescriptionBoton.addEventListener("click", () => {
+  eventListIcon.style.filter = "var(--imgIconColor)";
+  mapIcon.style.filter = "var(--imgGreenButtonIconColor)";
+  friendsIcon.style.filter = "var(--imgIconColor)";
   eventsListElementActivated = "none";
   mapAndDescriptionElementActivated = "block";
   friendListElementActivated = "none";
@@ -94,6 +109,9 @@ mapAndDescriptionBoton.addEventListener("click", () => {
 });
 
 friendListBoton.addEventListener("click", () => {
+  eventListIcon.style.filter = "var(--imgIconColor)";
+  mapIcon.style.filter = "var(--imgIconColor)";
+  friendsIcon.style.filter = "var(--imgGreenButtonIconColor)";
   eventsListElementActivated = "none";
   mapAndDescriptionElementActivated = "none";
   friendListElementActivated = "block";
