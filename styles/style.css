@@ -286,9 +286,10 @@ footer {
 
 #navbar-mobile button,input {
   text-align: center;
-  padding: 4px 10px 0px 10px;
+  padding: 4px 10% 0px;
   margin: 2px 0;
 
+  border-radius: var(--borderRadiusSize);
   cursor: pointer;
   color: var(--TextColor);
   background-color: var(--buttonColor);
