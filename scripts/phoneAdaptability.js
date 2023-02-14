@@ -1,6 +1,6 @@
 const contentElement = document.querySelector("#content");
 const navbarElement = document.querySelector("#navbar");
-const navbarMobileElement = document.querySelector("#navbar-mobile");
+const navbarMobileElement = document.querySelector(".navbar-mobile");
 
 /*const eventListButton = document.querySelector("#eventListBoton");
 const mapButton = document.querySelector("#mapBoton");

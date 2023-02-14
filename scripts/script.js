@@ -17,7 +17,7 @@ function darkMode() {
     r.style.setProperty("--MediunBackColor", "rgb(60, 60, 60)");
     r.style.setProperty("--buttonColor", "rgb(40, 40, 40)");
     r.style.setProperty("--buttonColorHover", "rgb(85, 85, 85)");
-    r.style.setProperty("--backgroundHeaderColor", "rgb(70, 70, 70)");
+    r.style.setProperty("--backgroundNavbarColor", "rgb(70, 70, 70)");
     r.style.setProperty("--imgIconColor", "invert(10%)");
   } else {
     //Modo Normal
@@ -26,7 +26,7 @@ function darkMode() {
     r.style.setProperty("--MediunBackColor", "rgb(150, 150, 150)");
     r.style.setProperty("--buttonColor", "rgb(210, 210, 210)");
     r.style.setProperty("--buttonColorHover", "rgb(190, 190, 190)");
-    r.style.setProperty("--backgroundHeaderColor", "rgb(170, 170, 170)");
+    r.style.setProperty("--backgroundNavbarColor", "rgb(170, 170, 170)");
     r.style.setProperty("--imgIconColor", "invert(90%)");
   }
 }
@@ -63,10 +63,10 @@ function deplegarMenu() {
   navMenu.classList.toggle("nav-ul");
 
   if (!navMenu.classList.contains("nav-ul")) {
-    botonMenuIcono.setAttribute("class", "closeIcon");
+    botonMenuIcono.setAttribute("id", "closeIcon");
     botonMenuIcono.setAttribute("src", "Icons/GUI/Close-256.png");
   } else {
-    botonMenuIcono.setAttribute("class", "menuIcon");
+    botonMenuIcono.setAttribute("id", "menuIcon");
     botonMenuIcono.setAttribute("src", "Icons/GUI/Row-256.png");
   }
 }
