@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MapFlip</title>
+    <link rel="icon" type="image/x-icon" href="../Icons/MapFlipPage_Icon.ico" />
+
+    <!--Libreria para el uso del mapa-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
+      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
+      integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
+      crossorigin=""
+    ></script>
+
+    <link rel="stylesheet" type="text/css" href="../styles/style.css" />
+  </head>
+
+  <body>
+    <!--Barra de navegacion-->
+    <header class="header">
+      <h1>MapFlip</h1>
+      <nav class="navbar">
+        <!--Menu-->
+        <div class="iconbar">
+          <img src="../Icons/GUI/Row-256.png" alt="Menu icon" id="menu-icon" />
+        </div>
+        <!--Barra de navegación-->
+        <ul class="nav-ul">
+          <li><a href="../pages/mapflip.html">Inicio</a></li>
+          <li>
+            <a
+              href="../index.html"
+              onclick="removeCredential()"
+              id="sign-off-link"
+              >Cerrar Sección</a
+            >
+          </li>
+          <li class="li-input">
+            <input
+              type="checkbox"
+              class="dark-mode-button"
+              onclick="darkMode(),activarModoOscuroManual()"
+            />
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--Contenido de la página-->
+    <div id="content">
+      <div class="event-list-container">
+        <!--Botones para añadir y filtrar-->
+        <button class="floating-button add" id="createEventButton">
+          <img src="../Icons/GUI/Add-New-256.png" alt="" />
+        </button>
+        <button class="floating-button filter" id="filterEventButton">
+          <img src="../Icons/GUI/Filter-Standard-256.png" alt="" />
+        </button>
+        <article class="forecast">
+          <h1>Eventos</h1>
+          <div class="eventListCreator"></div>
+
+          <article class="day-forecast">
+            <h2 id="event-name">Nombre Evento</h2>
+
+            <div class="event-presentation">
+              <img
+                id="event-icon"
+                src="../Icons/GradientSquare.png"
+                alt="Imagen del evento"
+              />
+              <p id="event-privacity">Publico/Privado</p>
+              <p id="event-type">Tipo de evento</p>
+            </div>
+          </article>
+        </article>
+
+        <aside>
+          <p>Anuncio</p>
+        </aside>
+      </div>
+
+      <div class="map-and-description-container">
+        <div id="map"></div>
+
+        <div id="eventDescription">
+          <article>
+            <header>
+              <!--<h3>Descripcion: </h3>-->
+              <h4>Nombre Evento</h4>
+            </header>
+            <p>
+              Reina en mi espíritu una alegría admirable, muy parecida a las
+              dulces alboradas de la primavera, de que gozo aquí con delicia.
+              Estoy solo, y me felicito de vivir en este país, el más a
+              propósito para almas como la mía, soy tan dichoso, mi querido
+              amigo, me sojuzga de tal modo la idea de reposar, que no me ocupo
+              de mi arte. Ahora no sabría dibujar, ni siquiera hacer una línea
+              con el lápiz; y, sin embargo, jamás he sido mejor pintor Cuando el
+              valle se vela en torno mío con un encaje de vapores; cuando el sol
+              de mediodía centellea sobre la impenetrable sombra de mi bosque
+              sin conseguir otra cosa que filtrar entre las hojas algunos rayos
+              que penetran hasta el fondo del santuario, cuando recostado sobre
+              la crecida hierba, cerca de la cascada, mi vista, más próxima a la
+              tierra, descubre multitud de menudas y diversas plantas; cuando
+              siento más cerca de mi corazón los rumores de vida de ese pequeño
+              mundo que palpita en los tallos de las hojas, y veo las formas
+              innumerables e infinitas de los gusanillos y de los insectos;
+              cuando siento, en fin, la presencia del Todopoderoso, que nos ha
+              creado a su imagen, y el soplo del amor sin limites que nos
+              sostiene y nos mece en el seno de una eterna.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <div class="contacts-list-container">
+        <article class="forecast">
+          <button class="floating-button add" id="addFrientButton">
+            <img src="../Icons/GUI/Add-New-256.png" alt="" />
+          </button>
+          <button class="floating-button filter" id="filterFriendButton">
+            <img src="../Icons/GUI/Filter-Standard-256.png" alt="" />
+          </button>
+          <h1>Amigos</h1>
+          <article class="day-forecast">
+            <h2 id="friend-name">Nombre Amigo</h2>
+            <div class="event-presentation">
+              <img
+                id="event-icon"
+                src="../Icons/GradientSquare.png"
+                alt="Imagen del evento"
+              />
+              <p id="friend-conectivity">
+                <span class="conectado">Conectado</span>
+              </p>
+              <p id="friend-">Participando evento</p>
+              <p id="membership-text"><span class="premium">Premium</span></p>
+            </div>
+          </article>
+          <article class="day-forecast">
+            <h2 id="friend-name">Nombre Amigo</h2>
+            <div class="event-presentation">
+              <img
+                id="event-icon"
+                src="../Icons/3DView_UI_Icon.png"
+                alt="Imagen del evento"
+              />
+              <p id="friend-conectivity">
+                <span class="desconectado">Desconectado</span>
+              </p>
+              <p id="friend-event-participation">Participando evento</p>
+              <p id="membership-text"><span class="">Normal</span></p>
+            </div>
+          </article>
+        </article>
+
+        <aside>
+          <p>Anuncio</p>
+        </aside>
+      </div>
+    </div>
+    <footer>
+      <nav class="navbar-mobile">
+        <button id="eventListBoton">
+          <img
+            src="../Icons/GUI/List-256.png"
+            alt="Map Icon"
+            class="listIcon"
+          />
+        </button>
+        <button id="mapBoton">
+          <img src="../Icons/GUI/Maps-256.png" alt="Map Icon" class="mapIcon" />
+        </button>
+        <button id="friendListBoton">
+          <img
+            src="../Icons/GUI/People-256.png"
+            alt="Map Icon"
+            class="friendsIcon"
+          />
+        </button>
+      </nav>
+    </footer>
+  </body>
+  <script
+    src="../scripts/screenAdaptability.js"
+    type="text/javascript"
+  ></script>
+  <script src="../scripts/darkMode.js" type="text/javascript"></script>
+  <script src="../scripts/script.js" type="text/javascript"></script>
+  <script src="../scripts/navbarMobile.js" type="text/javascript"></script>
+  <script src="../scripts/map.js" type="text/javascript"></script>
+  <script src="../scripts/signOff.js" type="text/javascript"></script>
+</html>

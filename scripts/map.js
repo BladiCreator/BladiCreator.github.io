@@ -1,14 +1,14 @@
 /*URL para la documentacion de Leaflet https://leafletjs.com/reference.html#map-property*/
-const imageDirectory = "./Icons/";
-//Variables para testear
+const imageDirectory = "../Icons/";
+
 let imageNameArray = [
   "GradientSquare.png",
   "2DView_UI_Icon.png",
   "3DView_UI_Icon.png",
   "Properties_UI_Icon.png",
 ];
-let eventTypeArray = ["Patinaje", "Ciclismo", "Danza","Baloncesto"];
-
+let eventTypeArray = ["Patinaje", "Ciclismo", "Danza", "Baloncesto"];
+//Variables para testear
 let latitud;
 let longitud = -0.09;
 let altura = 15;
@@ -36,10 +36,46 @@ if (navigator.geolocation) {
       maxZoom: 19,
       attribution: "© OpenStreetMap",
     }).addTo(map);
+    map.attributionControl.setPosition("bottomleft");
+
+    //TODO: Crear los eventos personalizado para el mapa
+
+    //** Area de Botones
+    // Crea un control personalizado
+    var createEventControl_btn = L.Control.extend({
+      options: {
+        position: "bottomright",
+      },
+      onAdd: function (mapa) {
+        var container = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+        container.innerHTML =
+          '<button class="floating-map-button add" id="create-map-event-btn" onclick="createEventMapFlip()">' +
+          '<img src="../Icons/GUI/Add-New-256.png" alt=""/></button>';
+        return container;
+      },
+    });
+    var createFilterControl_btn = L.Control.extend({
+      options: {
+        position: "bottomright",
+      },
+      onAdd: function (mapa) {
+        var container = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+        container.innerHTML =
+          '<button class="floating-map-button filter" id="filter-map-event-btn" onclick="filterEventMapFlip()">' +
+          '<img src="../Icons/GUI/Filter-Standard-256.png" alt=""/></button>';
+        return container;
+      },
+    });
+
+    // Agrega el control personalizado al mapa
+    map.addControl(new createFilterControl_btn());
+    map.addControl(new createEventControl_btn());
+
+    //**------------------
 
     //TODO: Mejorar el punto donde está el usuario
     //1 second = 1000 milliseconds.
-    const intervalID = setInterval(cargadorDeEventos, 10000);
+    const intervalID = setInterval(cargadorDeEventos, 100000);
 
     //Muestra los primeros eventos al inicio
     simularEventos(map);
@@ -107,11 +143,9 @@ function simularEventos(map) {
       let eventName = latitudRandomTotal + " " + longitudRandomTotal;
       let eventPrivacity =
         Math.round(Math.random(2) + 1) == 1 ? "Publico" : "Privado";
-      let randomIndex = Math.round(Math.random() * (imageNameArray.length - 1))
-      let eventType =
-        eventTypeArray[randomIndex];
-      let imageName =
-        imageNameArray[randomIndex];
+      let randomIndex = Math.round(Math.random() * (imageNameArray.length - 1));
+      let eventType = eventTypeArray[randomIndex];
+      let imageName = imageNameArray[randomIndex];
       let eventImagen = imageDirectory + imageName;
       let eventAltImg = "Una imagen";
       createEventElement(
@@ -164,7 +198,7 @@ function createEventElement(
   name = "Nombre Evento",
   privacity = "Publico/Privado",
   type = "Tipo de evento",
-  img = "Icons/GradientSquare.png",
+  img = "../Icons/GradientSquare.png",
   alt = "Imagen del evento"
 ) {
   const article = document.createElement("article");
@@ -194,11 +228,41 @@ function createEventElement(
   const pEventType = document.createElement("p");
   pEventType.id = "event-type";
   pEventType.textContent = type;
-  article.append(pEventType);
+  divEventPresentation.append(pEventType);
 
   return Element;
 }
 
-function clearEventElementList(){
+function clearEventElementList() {
   eventListCreator.innerHTML = "";
+}
+
+//*Area de controles
+const createEventButton = document.querySelector("#createEventButton");
+const filterEventButton = document.querySelector("#filterEventButton");
+const addFriendButton = document.querySelector("#addFrientButton");
+const filterFriendButton = document.querySelector("#filterFriendButton");
+
+createEventButton.addEventListener("click", () => {
+  createEventMapFlip();
+});
+
+filterEventButton.addEventListener("click", () => {
+  filterEventMapFlip();
+});
+
+addFriendButton.addEventListener("click", () => {
+  alert("Añadir contacto");
+});
+
+filterFriendButton.addEventListener("click", () => {
+  alert("Filtrar contactos");
+});
+
+function createEventMapFlip() {
+  alert("Crear eventos");
+}
+
+function filterEventMapFlip() {
+  alert("Filtrar evento");
 }
