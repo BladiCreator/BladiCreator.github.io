@@ -655,9 +655,20 @@ footer {
   .forecast {
     height: 100%;
   }
+
+  .floating-map-button,
+  .floating-button {
+    width: 60px;
+    height: 60px;
+  }
+  .floating-button img,
+  .floating-map-button img {
+    width: 30px;
+    height: 30px;
+  }
   .add {
     top: auto;
-    bottom: 50px;
+    bottom: 70px;
     right: 0px;
   }
   .filter {
