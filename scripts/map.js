@@ -202,7 +202,7 @@ function createEventElement(
   alt = "Imagen del evento"
 ) {
   const article = document.createElement("article");
-  article.className = "day-forecast";
+  article.className = "card-list-container";
   eventListCreator.append(article);
 
   const h2 = document.createElement("h2");
@@ -211,7 +211,7 @@ function createEventElement(
   article.append(h2);
 
   const divEventPresentation = document.createElement("div");
-  divEventPresentation.className = "event-presentation";
+  divEventPresentation.className = "card-presentation-container";
   article.append(divEventPresentation);
 
   const imgElement = document.createElement("img");

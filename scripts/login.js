@@ -5,7 +5,7 @@ const userEmailKey = "userEmail";
 const userPasswordKey = "userPassword";
 const credentialKey = "credential";
 
-const formElement = document.querySelector(".loginForm");
+const formElement = document.querySelector(".login-form");
 const emailElement = document.querySelector("#email-LogIn");
 const passwordElement = document.querySelector("#password-LogIn");
 const savePasswordElement = document.querySelector(".hidden-xs-up");

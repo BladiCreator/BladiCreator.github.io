@@ -21,7 +21,7 @@ function darkMode() {
     r.style.setProperty("--imgIconColor", "invert(10%)");
     r.style.setProperty("--strongShadowColor", "rgba(255, 255, 255, 0.065)");
     r.style.setProperty("--mediumShadowColor", "rgba(255, 255, 255, 0.045)");
-    r.style.setProperty("--buttonShadowColor", "rgba(255, 255, 255, 0.14)");
+    r.style.setProperty("--buttonShadowColor", "rgba(255, 255, 255, 0.09)");
     //* URL
     r.style.setProperty("--urlPasswordIcon", "url(../Icons/GUI/icons8-password-key-24_white.png)");
     r.style.setProperty("--urlEmailIcon", "url(../Icons/GUI/icons8-mail-24-white.png)");

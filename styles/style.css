@@ -26,12 +26,14 @@
   --urlEmailIcon: 'url(../Icons/GUI/icons8-mail-24-black.png.png)';
 
   /** Otros */
-  --borderRadiusSize: 2.5px;
+  --prymaryBorderRadiusSize: 2.5px;
+  --secondaryBorderRadiusSize: 5px 20px;
 
   /** Statics(No deben ser accesible desde JavaScripts) */
   --imgGreenButtonIconColor: invert(80%) sepia(35%) saturate(811%)
     hue-rotate(75deg) brightness(230%) contrast(160%);
   --primaryColor: #01ad11;
+  --secondaryColor: #1a87d5;
 }
 
 @keyframes premiumColor {
@@ -52,7 +54,7 @@ input,
 button {
   outline: none;
   border-width: 0;
-  border-radius: var(--borderRadiusSize);
+  border-radius: var(--prymaryBorderRadiusSize);
   cursor: pointer;
   color: var(--TextColor);
   background-color: var(--buttonColor);
@@ -160,11 +162,10 @@ hr {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  box-shadow: 1px 1px 4px 0 var(--buttonShadowColor),
-    3px 3px 6px 0 var(--buttonShadowColor);
+  box-shadow: 1px 2px 2px 1px var(--buttonShadowColor);
   cursor: pointer;
-}
-.floating-button {
+  
+}.floating-button {
   margin: 0 10px 10px 0;
   position: absolute;
 }
@@ -175,7 +176,7 @@ hr {
   user-select: none;
 }
 .add {
-  background-image: linear-gradient(45deg, blue, #ff69ff, blue);
+  background-image: linear-gradient(45deg, #9d00ff, #ff4081, #9d00ff);
   background-size: 500% 280%;
   top: 5px;
   right: 50px;
@@ -186,6 +187,30 @@ hr {
   top: 5px;
   right: 0px;
 }
+.add:hover,.filter:hover{
+  transform: translate(-2px,-2px);
+  transition: 200ms;
+}
+.add:active,.filter:active{
+  transform: translate(1px,1px);
+}
+.add:hover::before,.filter:hover::before {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: var(--BackColor);
+  color: var(--TextColor);
+  border-radius: var(--prymaryBorderRadiusSize);
+  font-size: 0.875rem;
+}.add:hover::before {
+  content: "Crear evento";
+}
+.filter:hover::before {
+  content: "Filtrar eventos";
+}
+
 /*!En caso de que se cambie de mapa o se quite la marca del mapa habría que cambiar estas posiciones*/
 #create-map-event-btn {
   top: auto;
@@ -220,6 +245,8 @@ hr {
 }
 
 .navbar ul li a {
+  width: 180px;
+  box-sizing: border-box;
   padding: 8.5px;
   margin: 5px;
   font-size: 1.1em;
@@ -229,14 +256,18 @@ hr {
   float: none;
   text-transform: uppercase;
   position: relative;
-  transition: 0.2s;
-  border-radius: var(--borderRadiusSize);
+  border-radius: var(--secondaryBorderRadiusSize);
 
   color: var(--TextColor);
   background-color: var(--buttonColor);
 }
 .navbar ul li a:hover {
+  transition: 400ms;
   background-color: var(--buttonColorHover);
+  box-shadow: 0 3px 0 0 var(--primaryColor);
+  transform: translate(-3px, -3px);
+}.navbar ul li a:active{
+  transform: translate(1px, 1px);
 }
 
 .iconbar {
@@ -281,7 +312,7 @@ hr {
   border-width: thin;
   border-color: var(--MediumTextColor);
 }
-.forecast {
+.list-container {
   height: 60%;
   /*margin: 0 2.5px 0 0;*/
   padding: 0;
@@ -289,38 +320,40 @@ hr {
   overflow-y: auto;
   /*TODO:Añadir un scroll personalizado*/
 }
-.forecast > h1,
-.day-forecast {
+.list-container > h1,
+.card-list-container {
   /**Las cartas eventos*/
   margin: 0.25rem;
   padding: 0.15rem;
   font-size: 1.2rem;
   background-color: var(--buttonColor);
-  border-radius: var(--borderRadiusSize);
+  border-radius: var(--prymaryBorderRadiusSize);
   box-shadow: 0 1px 3px 0 var(--strongShadowColor),
     0 2px 6px 0 var(--mediumShadowColor);
 }
-.day-forecast {
+.card-list-container {
   cursor: pointer;
 }
-.day-forecast:hover {
+.card-list-container:hover {
   background-color: var(--buttonColorHover);
 }
-.day-forecast > h2,
-.day-forecast p {
+.card-list-container > h2,
+.card-list-container p {
   margin: 0.2rem;
   font-size: 1rem;
   text-align: left;
   display: block;
 }
-.day-forecast img {
+.card-list-container img {
+  margin: 0 2.5px 2.5px;
   border-radius: 50%;
   max-width: 50px;
   max-height: 50px;
   float: left;
   user-select: none;
+  background-color: var(--secondaryColor);
 }
-.event-presentation {
+.card-presentation-container {
   display: inline-block;
   width: 100%;
 }
@@ -331,7 +364,7 @@ hr {
   text-align: center;
   font-weight: bold;
   background-color: var(--BackColor);
-  border-radius: var(--borderRadiusSize);
+  border-radius: var(--prymaryBorderRadiusSize);
   box-shadow: 1px 1px 2px 0px var(--strongShadowColor),
     3px 3px 3px 1px var(--mediumShadowColor);
   float: right;
@@ -359,10 +392,6 @@ hr {
   background-size: 200% auto;
   animation: premiumColor 2s infinite;
 }
-.premium:hover {
-  animation-play-state: paused;
-  box-shadow: 0 0 50px 50px rgba(255, 255, 255, 0.8) inset;
-}
 
 .map-and-description-container {
   display: block;
@@ -370,23 +399,23 @@ hr {
   width: 50%;
   height: 100%;
 }
-#eventDescription {
+.event-description-container {
   border: solid;
   border-inline: none;
   border-block-end: none;
   border-width: thin;
   border-color: var(--MediumTextColor);
-  height: 25%; /**El mapa ocupa el 75% por lo que la descripcion debe ocupar 25%*/
+  height: 25%; /**El mapa ocupa el 75% por lo que la descripción debe ocupar 25%*/
   overflow-y: auto;
 }
-#eventDescription h3,
-#eventDescription h4,
-#eventDescription p {
+.event-description-container h3,
+.event-description-container h4,
+.event-description-container p {
   margin: 0.1rem;
   padding: 0.05rem;
 }
-#eventDescription p {
-  font-size: 0.93rem;
+.event-description-container p {
+  font-size: 1rem;
 }
 
 .contacts-list-container {
@@ -416,7 +445,7 @@ hr {
 #map {
   height: 75%;
   width: 100%;
-  border-radius: var(--borderRadiusSize);
+  border-radius: var(--prymaryBorderRadiusSize);
 }
 
 #map::backdrop {
@@ -467,7 +496,7 @@ footer {
   width: 27px;
   height: 27px;
   border: thin solid #c8ccd4;
-  border-radius: var(--borderRadiusSize);
+  border-radius: var(--prymaryBorderRadiusSize);
   vertical-align: middle;
   margin: 0px 5px 0 0;
 
@@ -535,7 +564,7 @@ footer {
   flex-direction: column;
 }
 
-.loginForm {
+.login-form {
   background-color: var(--MediumBackColor);
   box-shadow: 0 2px 8px 0 var(--strongShadowColor),
     0 6px 20px 0 var(--mediumShadowColor);
@@ -549,8 +578,8 @@ footer {
   overflow-y: auto;
   user-select: none;
 }
-.loginForm a,
-.loginForm label {
+.login-form a,
+.login-form label {
   font-weight: bold;
 }
 
@@ -652,7 +681,7 @@ footer {
     height: 100%;
     border: none;
   }
-  .forecast {
+  .list-container {
     height: 100%;
   }
 
@@ -694,7 +723,7 @@ footer {
     width: 100%;
     border-radius: 0;
   }
-  #eventDescription {
+  .event-description-container {
     height: 100%;
     width: 100%;
     display: none;
@@ -731,12 +760,12 @@ footer {
 
   /**Area LogIn responsive*/
 
-  .loginForm {
+  .login-form {
     width: 67.5%;
   }
 
-  .loginForm a,
-  .loginForm label {
+  .login-form a,
+  .login-form label {
     font-size: 0.85em;
     font-weight: bold;
   }
@@ -785,9 +814,6 @@ footer {
     font-size: 20px;
     width: -webkit-fill-available;
   }
-  .navbar ul li a:hover {
-    background-color: var(--buttonColorHover);
-  }
 
   /**Area navegacion movil*/
   .navbar-mobile button {
@@ -811,7 +837,7 @@ footer {
 
   /**Area LogIn*/
 
-  .loginForm {
+  .login-form {
     width: 97.5%;
     border-radius: 7.5px;
   }
