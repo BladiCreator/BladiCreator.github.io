@@ -658,17 +658,17 @@ footer {
 
   .floating-map-button,
   .floating-button {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
   .floating-button img,
   .floating-map-button img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
   .add {
     top: auto;
-    bottom: 70px;
+    bottom: 60px;
     right: 0px;
   }
   .filter {
