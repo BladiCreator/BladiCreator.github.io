@@ -1,5 +1,5 @@
 //*URL para la documentacion de Leaflet https://leafletjs.com/reference.html#map-property
-const imageDirectory = "../icons/activity_Icon/";
+const imageDirectory = "../Icons/activity_Icon/";
 
 let imageNameArray = [
   "rollers.png",
@@ -95,7 +95,7 @@ function loadMap() {
           add_btn_element_created.id = "create-map-event-btn";
           add_btn_element_created.addEventListener("click", createEventMapFlip);
 
-          img_element_created.src = "../icons/gui/add_new_256.png";
+          img_element_created.src = "../Icons/gui/add_new_256.png";
 
           add_btn_element_created.appendChild(img_element_created);
 
@@ -123,7 +123,7 @@ function loadMap() {
             filterEventMapFlip
           );
 
-          img_element_created.src = "../icons/gui/filter_standard_256.png";
+          img_element_created.src = "..Icons/gui/filter_standard_256.png";
 
           filter_btn_element_created.appendChild(img_element_created);
 
@@ -153,7 +153,7 @@ function loadMap() {
             map.setView(userPosition, zoom);
           });
 
-          img_element_created.src = "../icons/gui/my_location_48dp.png";
+          img_element_created.src = "../Icons/gui/my_location_48dp.png";
 
           filter_btn_element_created.appendChild(img_element_created);
 
@@ -173,7 +173,7 @@ function loadMap() {
       //TODO: Mejorar el punto donde está el usuario
       var userMarker = {
         icon: L.icon({
-          iconUrl: "../icons/gui/standing_man_48dp.png",
+          iconUrl: "../Icons/gui/standing_man_48dp.png",
           iconSize: [19, 19], // tamaño de la imagen
           iconAnchor: [9.5, 9.5], // punto central de la imagen
           className: "user-marker", // clase CSS personalizada para agregar fondo azul
@@ -363,7 +363,7 @@ function createEventElement(
   name = "Nombre Evento",
   privacity = "Publico/Privado",
   type = "Tipo de evento",
-  img = "../icons/activity_Icon/pedal_bike_black_24dp.png",
+  img = "../Icons/activity_Icon/pedal_bike_black_24dp.png",
   alt = "Imagen del evento",
   className,
   description = "None"

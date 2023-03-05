@@ -22,8 +22,8 @@
   --buttonShadowColor: rgba(0, 0, 0, 0.32);
 
   /** URL de imágenes */
-  --urlPasswordIcon: "url(../icons/gui/password_key_24_black.png)";
-  --urlEmailIcon: "url(../icons/gui/mail_24_black.png)";
+  --urlPasswordIcon: "url(../Icons/gui/password_key_24_black.png)";
+  --urlEmailIcon: "url(../Icons/gui/mail_24_black.png)";
 
   /** Statics(No deben ser accesible desde JavaScripts) */
   --imgGreenButtonIconColor: invert(80%) sepia(35%) saturate(811%)
