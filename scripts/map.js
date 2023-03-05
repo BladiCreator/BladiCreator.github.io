@@ -123,7 +123,7 @@ function loadMap() {
             filterEventMapFlip
           );
 
-          img_element_created.src = "..Icons/gui/filter_standard_256.png";
+          img_element_created.src = "../Icons/gui/filter_standard_256.png";
 
           filter_btn_element_created.appendChild(img_element_created);
 
