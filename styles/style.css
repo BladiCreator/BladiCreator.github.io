@@ -6,13 +6,13 @@
 ::-webkit-scrollbar {
   display: none;
 }
-/*Si modifica aqui tambien obligatorio en el JS*/
+/*Si modifica aquí también obligatorio en el JS*/
 :root {
   /** Colores */
-  --BackColor: white;
-  --TextColor: black;
-  --MediumTextColor: rgb(180, 180, 180);
-  --MediumBackColor: rgb(240, 240, 240);
+  --backColor: white;
+  --textColor: black;
+  --mediumTextColor: rgb(180, 180, 180);
+  --mediumBackColor: rgb(240, 240, 240);
   --buttonColor: rgb(220, 220, 220);
   --buttonColorHover: rgb(190, 190, 190);
   --backgroundNavbarColor: rgb(200, 200, 200);
@@ -22,18 +22,23 @@
   --buttonShadowColor: rgba(0, 0, 0, 0.32);
 
   /** URL de imágenes */
-  --urlPasswordIcon: 'url(../Icons/GUI/icons8-password-key-24_black.png)';
-  --urlEmailIcon: 'url(../Icons/GUI/icons8-mail-24-black.png.png)';
-
-  /** Otros */
-  --prymaryBorderRadiusSize: 2.5px;
-  --secondaryBorderRadiusSize: 5px 20px;
+  --urlPasswordIcon: "url(../icons/gui/icons8-password-key-24_black.png)";
+  --urlEmailIcon: "url(../icons/gui/icons8-mail-24-black.png.png)";
 
   /** Statics(No deben ser accesible desde JavaScripts) */
   --imgGreenButtonIconColor: invert(80%) sepia(35%) saturate(811%)
     hue-rotate(75deg) brightness(230%) contrast(160%);
+  --mapTileColor: invert(85%);
   --primaryColor: #01ad11;
-  --secondaryColor: #1a87d5;
+  --secondaryColor: #00cccc;
+  --acceptBtnBackgroundColor: #16a738;
+  --cancelBtnBackgroundColor: #cb3737;
+  --acceptBtnBackgroundColor_Hover: #27b448;
+  --cancelBtnBackgroundColor_hover: #d64e4e;
+
+  /** Otros */
+  --primaryBorderRadiusSize: 2.5px;
+  --secondaryBorderRadiusSize: 5px 20px;
 }
 
 @keyframes premiumColor {
@@ -43,43 +48,53 @@
 }
 
 body {
-  background-color: var(--BackColor); /*Cambiar este color para buscar huecos*/
-  color: var(--TextColor);
+  background-color: var(--backColor); /*Cambiar este color para buscar huecos*/
+  color: var(--textColor);
   overflow: hidden;
   display: block;
   margin: 0;
 }
 
 input,
-button {
+button,
+select {
   outline: none;
   border-width: 0;
-  border-radius: var(--prymaryBorderRadiusSize);
+  border-radius: var(--primaryBorderRadiusSize);
   cursor: pointer;
-  color: var(--TextColor);
+  color: var(--textColor);
   background-color: var(--buttonColor);
+  padding: 10px;
+  margin: 5px 5px;
 }
 
 input[type="button"],
 input[type="submit"],
 input[type="email"],
-input[type="password"]{
-  margin: 5px 0px;
+input[type="password"] {
+  margin: 5px 5px;
   padding: 10px;
   height: 2.56rem;
   width: 22rem;
 }
 
 input[type="email"],
-input[type="password"]{
+input[type="password"] {
   height: 2rem;
   width: 21rem;
 }
-
 input[type="email"]::placeholder,
-input[type="password"]::placeholder{
+input[type="password"]::placeholder {
   user-select: none;
   text-align: start;
+}
+
+select:focus,
+input[type="datetime"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  box-shadow: 0 0 0px 2px var(--textColor);
 }
 
 input[type="button"]:hover,
@@ -89,11 +104,40 @@ input[type="submit"]:hover {
 
 a {
   text-decoration: none;
-  color: var(--TextColor);
+  color: var(--textColor);
 }
 
 hr {
-  color: var(--TextColor);
+  color: var(--textColor);
+}
+
+.range-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}.range-container input[type="range"]{
+  width: 100%;
+}.range-container label{
+  margin: 0 5px;
+}
+
+/** Area colores de los iconos */
+.event-icon-container {
+  background-color: #00cccc;
+  border-radius: 50%;
+  border: solid 3px white;
+}
+.event-icon-img {
+  position: absolute;
+  top: 7%;
+  left: 7%;
+}
+.user-marker {
+  background-color: var(--primaryColor);
+  border-radius: 50%;
+  border: solid 3px white;
 }
 
 /**Area de navegación*/
@@ -103,8 +147,9 @@ hr {
   border-inline: none;
   border-block-start: none;
   border-width: thin;
-  border-color: var(--MediumTextColor);
-}.header h1{
+  border-color: var(--mediumTextColor);
+}
+.header h1 {
   display: inline;
   padding: 2.5px;
 }
@@ -124,7 +169,7 @@ hr {
   position: relative;
   width: 70px;
   height: 35px;
-  background-color: var(--BackColor);
+  background-color: var(--backColor);
   border-radius: 50px;
   outline: none;
   float: right;
@@ -164,8 +209,8 @@ hr {
   border-radius: 50%;
   box-shadow: 1px 2px 2px 1px var(--buttonShadowColor);
   cursor: pointer;
-  
-}.floating-button {
+}
+.floating-button {
   margin: 0 10px 10px 0;
   position: absolute;
 }
@@ -175,6 +220,16 @@ hr {
   height: 20px;
   user-select: none;
 }
+.floating-button:hover,
+.floating-map-button:hover {
+  transform: translate(-1px, -1px);
+  background-size: 300% 250%;
+  transition: 200ms;
+}
+.floating-button:active,
+.floating-map-button:active {
+  transform: translate(1px, 1px);
+}
 .add {
   background-image: linear-gradient(45deg, #9d00ff, #ff4081, #9d00ff);
   background-size: 500% 280%;
@@ -183,18 +238,18 @@ hr {
 }
 .filter {
   background-image: linear-gradient(45deg, yellow, #34d158, yellow);
-  background-size: 500% 230%;
+  background-size: 500% 280%;
   top: 5px;
   right: 0px;
 }
-.add:hover,.filter:hover{
-  transform: translate(-2px,-2px);
-  transition: 200ms;
+.my-location {
+  background-image: linear-gradient(45deg, #2e43ff, #349fd1, #2e43ff);
+  background-size: 500% 280%;
+  top: 5px;
+  right: 0px;
 }
-.add:active,.filter:active{
-  transform: translate(1px,1px);
-}
-.add:hover::before,.filter:hover::before {
+/**Creo una tarjeta para mostrar información adicional del botón*/
+/*.add:hover::before,.filter:hover::before {
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -202,17 +257,17 @@ hr {
   padding: 5px;
   background-color: var(--BackColor);
   color: var(--TextColor);
-  border-radius: var(--prymaryBorderRadiusSize);
+  border-radius: var(--primaryBorderRadiusSize);
   font-size: 0.875rem;
 }.add:hover::before {
   content: "Crear evento";
 }
 .filter:hover::before {
   content: "Filtrar eventos";
-}
+}*/
 
-/*!En caso de que se cambie de mapa o se quite la marca del mapa habría que cambiar estas posiciones*/
-#create-map-event-btn {
+/*!En caso de que se cambie de mapa habría que cambiar estas posiciones*/
+/*#create-map-event-btn {
   top: auto;
   bottom: 65px;
   right: 5px;
@@ -221,7 +276,7 @@ hr {
   top: auto;
   bottom: 15px;
   right: 5px;
-}
+}*/
 
 .navbar {
   display: block;
@@ -258,17 +313,17 @@ hr {
   position: relative;
   border-radius: var(--secondaryBorderRadiusSize);
 
-  color: var(--TextColor);
+  color: var(--textColor);
   background-color: var(--buttonColor);
 }
 .navbar ul li a:hover {
   transition: 400ms;
   background-color: var(--buttonColorHover);
   box-shadow: 0 3px 0 0 var(--primaryColor);
-  transform: translate(-3px, -3px);
-}.navbar ul li a:active{
+  /*transform: translate(-3px, -3px);*/
+} /*.navbar ul li a:active{
   transform: translate(1px, 1px);
-}
+}*/
 
 .iconbar {
   display: none;
@@ -286,7 +341,7 @@ hr {
 /*Capa mas baja*/
 
 #content {
-  background-color: var(--MediumBackColor);
+  background-color: var(--mediumBackColor);
   display: flex;
   position: initial;
   margin-left: auto;
@@ -310,7 +365,7 @@ hr {
   border-block-end: none;
   border-left: none;
   border-width: thin;
-  border-color: var(--MediumTextColor);
+  border-color: var(--mediumTextColor);
 }
 .list-container {
   height: 60%;
@@ -327,7 +382,7 @@ hr {
   padding: 0.15rem;
   font-size: 1.2rem;
   background-color: var(--buttonColor);
-  border-radius: var(--prymaryBorderRadiusSize);
+  border-radius: var(--primaryBorderRadiusSize);
   box-shadow: 0 1px 3px 0 var(--strongShadowColor),
     0 2px 6px 0 var(--mediumShadowColor);
 }
@@ -344,15 +399,26 @@ hr {
   text-align: left;
   display: block;
 }
-.card-list-container img {
+
+#image-container {
   margin: 0 2.5px 2.5px;
-  border-radius: 50%;
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
   float: left;
-  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   background-color: var(--secondaryColor);
+  user-select: none;
 }
+#image-container img {
+  width: 75%;
+  height: 75%;
+  object-fit: cover;
+  margin: auto;
+}
+
 .card-presentation-container {
   display: inline-block;
   width: 100%;
@@ -363,8 +429,8 @@ hr {
   width: 85px;
   text-align: center;
   font-weight: bold;
-  background-color: var(--BackColor);
-  border-radius: var(--prymaryBorderRadiusSize);
+  background-color: var(--backColor);
+  border-radius: var(--primaryBorderRadiusSize);
   box-shadow: 1px 1px 2px 0px var(--strongShadowColor),
     3px 3px 3px 1px var(--mediumShadowColor);
   float: right;
@@ -404,7 +470,7 @@ hr {
   border-inline: none;
   border-block-end: none;
   border-width: thin;
-  border-color: var(--MediumTextColor);
+  border-color: var(--mediumTextColor);
   height: 25%; /**El mapa ocupa el 75% por lo que la descripción debe ocupar 25%*/
   overflow-y: auto;
 }
@@ -428,7 +494,7 @@ hr {
   border-block-end: none;
   border-right: none;
   border-width: thin;
-  border-color: var(--MediumTextColor);
+  border-color: var(--mediumTextColor);
 }
 #friend-conectivity {
   font-weight: bold;
@@ -445,7 +511,16 @@ hr {
 #map {
   height: 75%;
   width: 100%;
-  border-radius: var(--prymaryBorderRadiusSize);
+  border-radius: var(--primaryBorderRadiusSize);
+}
+
+.leaflet-tile-pane {
+  filter: var(--mapTileColor);
+}
+.leaflet-container .leaflet-control-attribution {
+  background: var(--backColor);
+  opacity: 0.8;
+  color: var(--textColor);
 }
 
 #map::backdrop {
@@ -456,7 +531,7 @@ hr {
 
 #content aside {
   margin: 0.25%;
-  background-color: var(--MediumBackColor);
+  background-color: var(--mediumBackColor);
 }
 
 /*Footer*/
@@ -465,7 +540,7 @@ footer {
   clear: both;
   width: 100%;
   text-align: center;
-  background-color: var(--MediumBackColor);
+  background-color: var(--mediumBackColor);
 }
 
 /*barra de navegación entre partes del content*/
@@ -489,14 +564,95 @@ footer {
   filter: var(--imgIconColor);
 }
 
+/**Crear evento Ventana modal*/
+
+.modal-event-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--mediumBackColor);
+  z-index: 1100;
+  pointer-events: none;
+  opacity: 0;
+}
+.modal-event-container h1 {
+  margin: 0.55em 0;
+}
+
+.show-create-event {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-create-event{
+  display: none;
+  background-color: var(--backColor);
+  width: 600px;
+  max-width: 100%;
+  padding: 30px 50px;
+  border-radius: var(--primaryBorderRadiusSize);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.modal-filter-event{
+  display: none;
+  background-color: var(--backColor);
+  width: 600px;
+  max-width: 100%;
+  padding: 30px 50px;
+  border-radius: var(--primaryBorderRadiusSize);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#cancel-or-create-event {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#cancel-or-create-event input[type="button"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+#cancel-create-event-btn {
+  background-color: var(--cancelBtnBackgroundColor);
+}
+#accept-create-event-btn {
+  background-color: var(--acceptBtnBackgroundColor);
+}
+#cancelBtnBackgroundColor:hover{
+  background-color: var(--cancelBtnBackgroundColor_hover);
+}
+#accept-create-event-btn:hover{
+  background-color: var(--acceptBtnBackgroundColor_Hover);
+}
+
+.form-create-event {
+  display: flex;
+  flex-direction: column;
+}
+
+/**LogIn Area*/
+
 /*!Area experimental*/
+/**Botón de guardar la contraseña*/
 .cbx {
   position: relative;
   top: 1px;
   width: 27px;
   height: 27px;
   border: thin solid #c8ccd4;
-  border-radius: var(--prymaryBorderRadiusSize);
+  border-radius: var(--primaryBorderRadiusSize);
   vertical-align: middle;
   margin: 0px 5px 0 0;
 
@@ -516,14 +672,13 @@ footer {
   transform: rotate(45deg) scale(0);
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
   transition-delay: 0.15s;
 }
 
 #cbx:checked ~ .cbx {
   border-color: transparent;
   background: var(--primaryColor);
-  animation: jelly 0.6s ease;
 }
 
 #cbx:checked ~ .cbx:after {
@@ -540,23 +695,20 @@ footer {
 }
 /*!----------------------------*/
 
-/**LogIn Area*/
-#email-LogIn{
+#email-LogIn {
   background-image: var(--urlEmailIcon);
   background-size: 20px 20px; /* ajusta el tamaño de la imagen */
   background-position: 5px center; /* ajusta la posición de la imagen */
   background-repeat: no-repeat; /* asegura que la imagen no se repita */
   padding-left: 30px; /* ajusta el espacio para que la imagen no se superponga con el texto */
 }
-#password-LogIn{
+#password-LogIn {
   background-image: var(--urlPasswordIcon);
   background-size: 20px 20px; /* ajusta el tamaño de la imagen */
   background-position: 5px center; /* ajusta la posición de la imagen */
   background-repeat: no-repeat; /* asegura que la imagen no se repita */
   padding-left: 30px; /* ajusta el espacio para que la imagen no se superponga con el texto */
 }
-
-
 
 .content-login {
   display: flex;
@@ -565,7 +717,7 @@ footer {
 }
 
 .login-form {
-  background-color: var(--MediumBackColor);
+  background-color: var(--mediumBackColor);
   box-shadow: 0 2px 8px 0 var(--strongShadowColor),
     0 6px 20px 0 var(--mediumShadowColor);
   width: 480px;
@@ -589,14 +741,14 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 30px;
-  color: var(--MediumTextColor);
+  color: var(--mediumTextColor);
 }
 .separator #line {
   display: block;
   width: 100%;
   height: 1px;
   border: 0;
-  background-color: var(--MediumTextColor);
+  background-color: var(--mediumTextColor);
 }
 
 .other-options {
@@ -652,7 +804,7 @@ footer {
     padding: 0;
   }
 
-  .header h1{
+  .header h1 {
     display: none;
   }
 
@@ -687,23 +839,23 @@ footer {
 
   .floating-map-button,
   .floating-button {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
   }
   .floating-button img,
   .floating-map-button img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
   }
   .add {
     top: auto;
     bottom: 60px;
-    right: 0px;
+    right: 5px;
   }
   .filter {
     top: auto;
-    bottom: 0px;
-    right: 0px;
+    bottom: 5px;
+    right: 5px;
   }
 
   .event-list-container aside {
@@ -778,7 +930,7 @@ footer {
     width: 90%;
   }
   input[type="email"],
-  input[type="password"]{
+  input[type="password"] {
     width: 82.5%;
   }
   /**Area de barra de navegacion*/
@@ -803,7 +955,7 @@ footer {
     position: fixed;
     width: 100%;
     height: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .navbar ul li {

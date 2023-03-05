@@ -11,26 +11,27 @@ activarModoOscuroManual();
 function darkMode() {
   if (checkBoxVar.checked) {
     //Modo Oscuro
-    r.style.setProperty("--BackColor", "rgb(25, 25, 25)");
-    r.style.setProperty("--TextColor", "white");
-    r.style.setProperty("--MediumTextColor", "rgb(90, 90, 90)");
-    r.style.setProperty("--MediumBackColor", "rgb(35, 35, 35)");
+    r.style.setProperty("--backColor", "rgb(25, 25, 25)");
+    r.style.setProperty("--textColor", "white");
+    r.style.setProperty("--mediumTextColor", "rgb(90, 90, 90)");
+    r.style.setProperty("--mediumBackColor", "rgb(35, 35, 35)");
     r.style.setProperty("--buttonColor", "rgb(55, 55, 55)");
     r.style.setProperty("--buttonColorHover", "rgb(85, 85, 85)");
     r.style.setProperty("--backgroundNavbarColor", "rgb(70, 70, 70)");
     r.style.setProperty("--imgIconColor", "invert(10%)");
-    r.style.setProperty("--strongShadowColor", "rgba(255, 255, 255, 0.065)");
-    r.style.setProperty("--mediumShadowColor", "rgba(255, 255, 255, 0.045)");
-    r.style.setProperty("--buttonShadowColor", "rgba(255, 255, 255, 0.09)");
+    r.style.setProperty("--strongShadowColor", "rgba(255, 255, 255, 0.1)");
+    r.style.setProperty("--mediumShadowColor", "rgba(255, 255, 255, 0.09)");
+    r.style.setProperty("--buttonShadowColor", "rgba(255, 255, 255, 0.12)");
+    r.style.setProperty("--mapTileColor", "invert(85%)");
     //* URL
-    r.style.setProperty("--urlPasswordIcon", "url(../Icons/GUI/icons8-password-key-24_white.png)");
-    r.style.setProperty("--urlEmailIcon", "url(../Icons/GUI/icons8-mail-24-white.png)");
+    r.style.setProperty("--urlPasswordIcon", "url(../icons/gui/icons8-password-key-24_white.png)");
+    r.style.setProperty("--urlEmailIcon", "url(../icons/gui/icons8-mail-24-white.png)");
   } else {
     //Modo Normal (CSS)
-    r.style.setProperty("--BackColor", "white");
-    r.style.setProperty("--TextColor", "black");
-    r.style.setProperty("--MediumTextColor", "rgb(180, 180, 180)");
-    r.style.setProperty("--MediumBackColor", "rgb(240, 240, 240)");
+    r.style.setProperty("--backColor", "white");
+    r.style.setProperty("--textColor", "black");
+    r.style.setProperty("--mediumTextColor", "rgb(180, 180, 180)");
+    r.style.setProperty("--mediumBackColor", "rgb(240, 240, 240)");
     r.style.setProperty("--buttonColor", "rgb(220, 220, 220)");
     r.style.setProperty("--buttonColorHover", "rgb(190, 190, 190)");
     r.style.setProperty("--backgroundNavbarColor", "rgb(200, 200, 200)");
@@ -38,9 +39,10 @@ function darkMode() {
     r.style.setProperty("--strongShadowColor", "rgba(0, 0, 0, 0.2)");
     r.style.setProperty("--mediumShadowColor", "rgba(0, 0, 0, 0.19)");
     r.style.setProperty("--buttonShadowColor", "rgba(0, 0, 0, 0.32)");
+    r.style.setProperty("--mapTileColor", "invert(0%)");
     //*URL
-    r.style.setProperty("--urlPasswordIcon", "url(../Icons/GUI/icons8-password-key-24_black.png)");
-    r.style.setProperty("--urlEmailIcon", "url(../Icons/GUI/icons8-mail-24-black.png)");
+    r.style.setProperty("--urlPasswordIcon", "url(../icons/gui/icons8-password-key-24_black.png)");
+    r.style.setProperty("--urlEmailIcon", "url(../icons/gui/icons8-mail-24-black.png)");
   }
 }
 

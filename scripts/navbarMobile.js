@@ -1,7 +1,7 @@
 /*Barra de navegacion movil*/
 const eventListBoton = document.querySelector("#eventListBoton");
 const mapAndDescriptionBoton = document.querySelector("#mapBoton");
-const friendListBoton = document.querySelector("#friendListBoton");
+const contactsListBoton = document.querySelector("#friendListBoton");
 
 const eventListIcon = document.querySelector(".listIcon");
 const mapIcon = document.querySelector(".mapIcon");
@@ -15,6 +15,7 @@ let eventsListElementActivated = "";
 let mapAndDescriptionElementActivated = "";
 let friendListElementActivated = "";
 
+//*Abrir lista de eventos
 eventListBoton.addEventListener("click", () => {
   eventListIcon.style.filter = "var(--imgGreenButtonIconColor)";
   mapIcon.style.filter = "var(--imgIconColor)";
@@ -25,6 +26,7 @@ eventListBoton.addEventListener("click", () => {
   updateOptionSelected();
 });
 
+//* Abrir mapa
 mapAndDescriptionBoton.addEventListener("click", () => {
   eventListIcon.style.filter = "var(--imgIconColor)";
   mapIcon.style.filter = "var(--imgGreenButtonIconColor)";
@@ -35,7 +37,8 @@ mapAndDescriptionBoton.addEventListener("click", () => {
   updateOptionSelected();
 });
 
-friendListBoton.addEventListener("click", () => {
+//* Abrir lista de contactos
+contactsListBoton.addEventListener("click", () => {
   eventListIcon.style.filter = "var(--imgIconColor)";
   mapIcon.style.filter = "var(--imgIconColor)";
   friendsIcon.style.filter = "var(--imgGreenButtonIconColor)";

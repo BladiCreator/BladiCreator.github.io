@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MapFlip</title>
-    <link rel="icon" type="image/x-icon" href="../Icons/MapFlipPage_Icon.ico" />
+    <link rel="icon" type="image/x-icon" href="../icons/MapFlipPage_Icon.ico" />
 
     <!--Libreria para el uso del mapa-->
     <link
@@ -31,7 +31,7 @@
       <nav class="navbar">
         <!--Menu-->
         <div class="iconbar">
-          <img src="../Icons/GUI/Row-256.png" alt="Menu icon" id="menu-icon" />
+          <img src="../icons/gui/Row-256.png" alt="Menu icon" id="menu-icon" />
         </div>
         <!--Barra de navegación-->
         <ul class="nav-ul">
@@ -59,29 +59,31 @@
     <div id="content">
       <div class="event-list-container">
         <!--Botones para añadir y filtrar-->
-        <button class="floating-button add" id="createEventButton">
-          <img src="../Icons/GUI/Add-New-256.png" alt="" />
+        <button class="floating-button add" id="create-event-btn">
+          <img src="../icons/gui/Add-New-256.png" alt="" />
         </button>
-        <button class="floating-button filter" id="filterEventButton">
-          <img src="../Icons/GUI/Filter-Standard-256.png" alt="" />
+        <button class="floating-button filter" id="filter-events-btn">
+          <img src="../icons/gui/Filter-Standard-256.png" alt="" />
         </button>
         <article class="list-container">
           <h1>Eventos</h1>
           <div class="eventListCreator"></div>
 
+          <!--
           <article class="card-list-container">
             <h2 id="event-name">Nombre Evento</h2>
 
             <div class="card-presentation-container">
               <img
                 id="event-icon"
-                src="../Icons/GradientSquare.png"
+                src="../icons/GradientSquare.png"
                 alt="Imagen del evento"
               />
               <p id="event-privacity">Publico/Privado</p>
               <p id="event-type">Tipo de evento</p>
             </div>
           </article>
+          -->
         </article>
 
         <aside>
@@ -125,21 +127,25 @@
 
       <div class="contacts-list-container">
         <article class="list-container">
-          <button class="floating-button add" id="addFrientButton">
-            <img src="../Icons/GUI/Add-New-256.png" alt="" />
+          <button class="floating-button add" id="add-contact-btn">
+            <img src="../icons/gui/Add-New-256.png" alt="" />
           </button>
-          <button class="floating-button filter" id="filterFriendButton">
-            <img src="../Icons/GUI/Filter-Standard-256.png" alt="" />
+          <button class="floating-button filter" id="filter-contacts-btn">
+            <img src="../icons/gui/Filter-Standard-256.png" alt="" />
           </button>
           <h1>Amigos</h1>
           <article class="card-list-container">
+
             <h2 id="friend-name">Nombre Amigo</h2>
+
             <div class="card-presentation-container">
-              <img
-                id="event-icon"
-                src="../Icons/GradientSquare.png"
-                alt="Imagen del evento"
-              />
+              <div id="image-container">
+                <img
+                  id="event-icon"
+                  src="../icons/account_circle_black_48dp.png"
+                  alt="Imagen del evento"
+                />
+              </div>
               <p id="friend-conectivity">
                 <span class="conectado">Conectado</span>
               </p>
@@ -147,14 +153,17 @@
               <p id="membership-text"><span class="premium">Premium</span></p>
             </div>
           </article>
+
           <article class="card-list-container">
             <h2 id="friend-name">Nombre Amigo</h2>
             <div class="card-presentation-container">
-              <img
-                id="event-icon"
-                src="../Icons/3DView_UI_Icon.png"
-                alt="Imagen del evento"
-              />
+              <div id="image-container">
+                <img
+                  id="event-icon"
+                  src="../icons/account_circle_black_48dp.png"
+                  alt="Imagen del evento"
+                />
+              </div>
               <p id="friend-conectivity">
                 <span class="desconectado">Desconectado</span>
               </p>
@@ -162,6 +171,7 @@
               <p id="membership-text"><span class="">Normal</span></p>
             </div>
           </article>
+
         </article>
 
         <aside>
@@ -169,27 +179,89 @@
         </aside>
       </div>
     </div>
+
+    <!--Barra de navegación móvil-->
     <footer>
       <nav class="navbar-mobile">
         <button id="eventListBoton">
           <img
-            src="../Icons/GUI/List-256.png"
+            src="../icons/gui/List-256.png"
             alt="Map Icon"
             class="listIcon"
           />
         </button>
         <button id="mapBoton">
-          <img src="../Icons/GUI/Maps-256.png" alt="Map Icon" class="mapIcon" />
+          <img src="../icons/gui/Maps-256.png" alt="Map Icon" class="mapIcon" />
         </button>
         <button id="friendListBoton">
           <img
-            src="../Icons/GUI/People-256.png"
+            src="../icons/gui/People-256.png"
             alt="Map Icon"
             class="friendsIcon"
           />
         </button>
       </nav>
     </footer>
+
+    <!--Ventanas modal-->
+
+    <div class="modal-event-container">
+      <div class="modal-create-event">
+        <h1>Nuevo evento</h1>
+        <form action="">
+          <div class="form-create-event">
+            <input type="text" class="create-event-name-input" id="" placeholder="Nombre del evento"/>
+            <select name="category" id="">
+              <option value="selectOption">Selecciona una opción</option>
+              <option value="skating">Patinaje</option>
+              <option value="dance">Baile</option>
+              <option value="selectOption"></option>
+              <option value="selectOption">Privado/Publico</option>
+            </select>
+            <select name="privacy" id="">
+              <option value="public">Publico</option>
+              <option value="private">Privado</option>
+            </select>
+            <input type="datetime" name="" id="" placeholder="Fecha inicial del evento">
+            <input type="datetime" name="" id="" placeholder="Fecha final del evento">
+            <input type="datetime" name="" id="" placeholder="Tiempo de aviso">
+            
+            <div id="cancel-or-create-event">
+              <input type="button" value="cancel" id="cancel-create-event-btn">
+              <input type="button" value="create" id="accept-create-event-btn">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-filter-event">
+        <h1>Filtrar evento</h1>
+        <form action="">
+          <div class="form-create-event">
+            <input type="text" class="create-event-name-input" id="" placeholder="Nombre del evento"/>
+            <select name="category" id="">
+              <option value="selectOption">Selecciona una opción</option>
+              <option value="skating">Patinaje</option>
+              <option value="dance">Baile</option>
+              <option value="selectOption"></option>
+              <option value="selectOption">Privado/Publico</option>
+            </select>
+            <select name="privacy" id="">
+              <option value="public">Publico</option>
+              <option value="private">Privado</option>
+            </select>
+            <div class="range-container"><!--TODO: Hacer el range mas bonito-->
+              <input type="range" value="8" id="distance-range" name="distance-range" min="1" max="8">
+              <label for="distance-range" id="distance-range-value">00</label>
+              <label for="distance-range">Distancia</label>
+            </div>
+            <div id="cancel-or-create-event">
+              <input type="button" value="cancel" id="cancel-create-event-btn">
+              <input type="button" value="filter" id="accept-create-event-btn">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
   <script
     src="../scripts/screenAdaptability.js"
