@@ -24,8 +24,8 @@ function darkMode() {
     r.style.setProperty("--buttonShadowColor", "rgba(255, 255, 255, 0.12)");
     r.style.setProperty("--mapTileColor", "invert(85%)");
     //* URL
-    r.style.setProperty("--urlPasswordIcon", "url(../icons/gui/icons8-password-key-24_white.png)");
-    r.style.setProperty("--urlEmailIcon", "url(../icons/gui/icons8-mail-24-white.png)");
+    r.style.setProperty("--urlPasswordIcon", "url(../icons/gui/password_key_24_white.png)");
+    r.style.setProperty("--urlEmailIcon", "url(../icons/gui/mail_24_white.png)");
   } else {
     //Modo Normal (CSS)
     r.style.setProperty("--backColor", "white");
@@ -41,8 +41,8 @@ function darkMode() {
     r.style.setProperty("--buttonShadowColor", "rgba(0, 0, 0, 0.32)");
     r.style.setProperty("--mapTileColor", "invert(0%)");
     //*URL
-    r.style.setProperty("--urlPasswordIcon", "url(../icons/gui/icons8-password-key-24_black.png)");
-    r.style.setProperty("--urlEmailIcon", "url(../icons/gui/icons8-mail-24-black.png)");
+    r.style.setProperty("--urlPasswordIcon", "url(../icons/gui/password_key_24_black.png)");
+    r.style.setProperty("--urlEmailIcon", "url(../icons/gui/mail_24_black.png)");
   }
 }
 

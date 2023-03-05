@@ -3,9 +3,9 @@ const imageDirectory = "../icons/activity_Icon/";
 
 let imageNameArray = [
   "rollers.png",
-  "bike-line.png",
+  "bike_line.png",
   "dance.png",
-  "basketball-fill.png",
+  "basketball_fill.png",
 ];
 let eventTypeArray = ["Patinaje", "Ciclismo", "Danza", "Baloncesto"];
 
@@ -95,7 +95,7 @@ function loadMap() {
           add_btn_element_created.id = "create-map-event-btn";
           add_btn_element_created.addEventListener("click", createEventMapFlip);
 
-          img_element_created.src = "../icons/gui/Add-New-256.png";
+          img_element_created.src = "../icons/gui/add_new_256.png";
 
           add_btn_element_created.appendChild(img_element_created);
 
@@ -123,7 +123,7 @@ function loadMap() {
             filterEventMapFlip
           );
 
-          img_element_created.src = "../icons/gui/Filter-Standard-256.png";
+          img_element_created.src = "../icons/gui/filter_standard_256.png";
 
           filter_btn_element_created.appendChild(img_element_created);
 

@@ -3,20 +3,25 @@ const botonMenu = document.querySelector(".iconbar");
 const botonMenuIcono = document.querySelector(".iconbar img");
 const navMenu = document.querySelector(".nav-ul");
 
-botonMenu.addEventListener("click", deplegarMenu);
-//En caso de que la dirección de los ficheros sean distintos se cambiarán
-botonMenuIcono.onerror = function () {
-  closeImg.src = "icons/gui/Close-256.png";
-  rowImg.src = "icons/gui/Row-256.png";
-  iniciarMenu();
+const CLOSE_IMG_URL = "./Icons/gui/close_256.png";
+const ROW_IMG_URL = "./Icons/gui/row_256.png";
+
+const CLOSE_IMG_URL_OPTIONAL = "../Icons/gui/close_256.png";
+const ROW_IMG_URL_OPTIONAL = "../Icons/gui/row_256.png";
+
+const closeImg = new Image();
+const rowImg = new Image();
+
+let fileName = getPageNmae();
+
+closeImg.onload = rowImg.onload = iniciarMenu;
+closeImg.onerror = rowImg.onerror = function () {
+  initRute(fileName);
 };
 
-var closeImg = new Image();
-var rowImg = new Image();
+initRute(fileName);
 
-//*Aparecerá dos errores de tipo: ERR_FILE_NOT_FOUND, pero ese error no tiene importancia por que se auto-arregla
-closeImg.src = "../icons/gui/Close-256.png";
-rowImg.src = "../icons/gui/Row-256.png";
+botonMenu.addEventListener("click", deplegarMenu);
 
 function deplegarMenu() {
   navMenu.classList.toggle("nav-ul");
@@ -34,5 +39,24 @@ function iniciarMenu() {
   }
 }
 
-//*Area barra de navegación
+function initRute(fileName){
+  if (fileName === "index") {
+    closeImg.src = CLOSE_IMG_URL;
+    rowImg.src = ROW_IMG_URL;
+  } else {
+    closeImg.src = CLOSE_IMG_URL_OPTIONAL;
+    rowImg.src = ROW_IMG_URL_OPTIONAL;
+  }
+}
 
+function getPageNmae() {
+  // Obtener la ruta y el nombre de archivo de la página actual
+  let pathName = window.location.pathname;
+
+  // Extraer solo el nombre de archivo (sin la extensión)
+  let fileName = pathName
+    .substring(pathName.lastIndexOf("/") + 1)
+    .replace(".html", "");
+
+  return fileName;
+}
