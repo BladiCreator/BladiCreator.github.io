@@ -10,7 +10,7 @@ let imageNameArray = [
 let eventTypeArray = ["Patinaje", "Ciclismo", "Danza", "Baloncesto"];
 
 //*Elementos modal
-const modal_event_container_element = document.querySelector(".modal-event-container");
+const modal_event_container_element = document.querySelector(".modal-container");
 const modal_create_event_element = document.querySelector(".modal-create-event");
 const modal_filter_event_element = document.querySelector(".modal-filter-event");
 
@@ -27,6 +27,10 @@ distance_range_value_element.textContent = distance_range_element.value;
 distance_range_element.addEventListener("change", () => {
 distance_range_value_element.textContent = distance_range_element.value;
 });
+
+//Constante
+
+const MAX_ZOOM_MARKERS = 13;
 
 //Variables para posición
 let latitud;
@@ -212,6 +216,49 @@ function loadMap() {
       }
 
       //**------------------ Eventos [Arriba]
+
+      //*Mostrar y ocultar los eventos que están dentro del limite del mapa
+
+      // Función para actualizar los marcadores en el mapa
+      function updateMarkers() {
+        // Obtener los límites del mapa actual
+        var bounds = map.getBounds();
+        var zoomLevel = map.getZoom();
+
+
+        if (zoomLevel < MAX_ZOOM_MARKERS) {
+          // Ocultar los marcadores cuando el zoom es menor a 10
+          map.removeLayer(groupLayer);
+        } else {
+          // Mostrar los marcadores cuando el zoom es mayor o igual a 10
+          map.addLayer(groupLayer);
+          // Filtrar los marcadores del grupo que están dentro de los límites del mapa
+          var visibleMarkers = groupLayer.getLayers().filter(function(layer) {
+            return bounds.contains(layer.getLatLng());
+          });
+
+          // Agregar los marcadores visibles al mapa y quitar los invisibles
+          groupLayer.eachLayer(function(layer) {
+            if (visibleMarkers.indexOf(layer) !== -1) {
+              // El marcador está dentro de los límites del mapa, se muestra
+              layer.addTo(map);
+            } else {
+              // El marcador está fuera de los límites del mapa, se oculta
+              map.removeLayer(layer);
+            }
+        });
+        }
+
+      }
+
+      //* Llamar a la función updateMarkers cada vez que el mapa cambie de posición o de zoom
+      map.on('moveend', function() {
+        updateMarkers();
+      });
+
+      // Llamar a la función updateMarkers por primera vez para mostrar los marcadores iniciales
+      updateMarkers();
+
     };
     navigator.geolocation.getCurrentPosition(success, function (msg) {
       console.error(msg);
@@ -257,7 +304,7 @@ function range(valor, valorMenor, valorMayor) {
 }
 
 function simularEventos(groupLayer) {
-  let maxDistance_KM = parseInt(distance_range_element.value);//TODO: Añadir el valor ranges
+  let maxDistance_KM = parseInt(distance_range_element.value);
   for (let cantidadEventos = 0; cantidadEventos < 10000; cantidadEventos++) {
     let numRandomLat =
       (Math.random() / 5) * (Math.round(Math.random()) * 2 - 1);
@@ -371,7 +418,6 @@ function createEventElement(
   //*Crea el elemento del evento
   const article = document.createElement("article");
   article.className = "card-list-container" + " " + className;
-  //TODO:insertar un eventListener para el evento y que se muestre un mensaje
   article.setAttribute("data-event",`${name}`)
   article.setAttribute("data-event_description",`${description}`)
   article.addEventListener("click", () => {
@@ -467,7 +513,7 @@ function filterEventMapFlip() {
 //--------------------------Crear eventos--------------------------------------
 cancel_create_event_btn.addEventListener("click", () => {
   modal_event_container_element.classList.remove("show-create-event");
-  modal_create_event_element.style.display = "none"; 
+  modal_create_event_element.style.display = "none";
 })
 
 accept_create_event_btn.addEventListener("click", () => {
@@ -477,7 +523,7 @@ accept_create_event_btn.addEventListener("click", () => {
 //--------------------------Filtrar eventos--------------------------------------
 cancel_filter_event_btn.addEventListener("click", () => {
   modal_event_container_element.classList.remove("show-create-event");
-  modal_filter_event_element.style.display = "none"; 
+  modal_filter_event_element.style.display = "none";
 })
 
 accept_filter_event_btn.addEventListener("click", () => {

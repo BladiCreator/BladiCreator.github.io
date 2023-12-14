@@ -133,41 +133,38 @@
           <button class="floating-button filter" id="filter-contacts-btn">
             <img src="../Icons/gui/filter_standard_256.png" alt="" />
           </button>
-          <h1>Amigos</h1>
+          <h1>Contactos</h1>
           <article class="card-list-container">
 
-            <h2 id="friend-name">Nombre Amigo</h2>
+            
 
             <div class="card-presentation-container">
               <div id="image-container">
                 <img
                   id="event-icon"
                   src="../Icons/account_circle_black_48dp.png"
-                  alt="Imagen del evento"
+                  alt="Imagen del contacto"
                 />
+                <span class="notify-activity conectado"></span>
               </div>
-              <p id="friend-conectivity">
-                <span class="conectado">Conectado</span>
-              </p>
+              <h2 id="friend-name">Nombre Amigo</h2>
               <p id="friend-">Participando evento</p>
               <p id="membership-text"><span class="premium">Premium</span></p>
             </div>
           </article>
 
           <article class="card-list-container">
-            <h2 id="friend-name">Nombre Amigo</h2>
             <div class="card-presentation-container">
               <div id="image-container">
                 <img
                   id="event-icon"
                   src="../Icons/account_circle_black_48dp.png"
-                  alt="Imagen del evento"
+                  alt="Imagen del contacto"
                 />
+                <span class="notify-activity cantidad-mensaje"></span>
               </div>
-              <p id="friend-conectivity">
-                <span class="desconectado">Desconectado</span>
-              </p>
-              <p id="friend-event-participation">Participando evento</p>
+              <h2 id="friend-name">Nombre Amigo</h2>
+              <p id="friend-">Participando evento</p>
               <p id="membership-text"><span class="">Normal</span></p>
             </div>
           </article>
@@ -205,7 +202,7 @@
 
     <!--Ventanas modal-->
 
-    <div class="modal-event-container">
+    <div class="modal-container">
       <div class="modal-create-event">
         <h1>Nuevo evento</h1>
         <form action="">
@@ -215,8 +212,6 @@
               <option value="selectOption">Selecciona una opción</option>
               <option value="skating">Patinaje</option>
               <option value="dance">Baile</option>
-              <option value="selectOption"></option>
-              <option value="selectOption">Privado/Publico</option>
             </select>
             <select name="privacy" id="">
               <option value="public">Publico</option>
@@ -242,8 +237,6 @@
               <option value="selectOption">Selecciona una opción</option>
               <option value="skating">Patinaje</option>
               <option value="dance">Baile</option>
-              <option value="selectOption"></option>
-              <option value="selectOption">Privado/Publico</option>
             </select>
             <select name="privacy" id="">
               <option value="public">Publico</option>

@@ -1,4 +1,4 @@
-const contentElement = document.querySelector("#content, .content-login");
+const contentElement = document.querySelector("#content, .content-login, .content-register, .content-contact, content-about-us");
 const headerElement = document.querySelector(".header");
 const navbarMobileElement = document.querySelector(".navbar-mobile");
 

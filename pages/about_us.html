@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login</title>
+		<link rel="icon" type="image/x-icon" href="../Icons/MapFlipPage_Icon.ico" />
+		<link rel="stylesheet" type="text/css" href="../styles/style.css" />
+	</head>
+	<body>
+		<!--Barra de navegacion-->
+		<header class="header">
+			<h1>MapFlip</h1>
+			<nav class="navbar">
+				<!--Menu-->
+				<div class="iconbar">
+					<img src="../Icons/gui/row_256.png" alt="Menu icon" id="menu-icon" />
+				</div>
+				<!--Barra de navegación-->
+				<ul class="nav-ul">
+					<li><a href="../index.html">Login</a></li>
+					<li><a href="./about_us.html">About Us</a></li>
+					<li><a href="./register.html">Register</a></li>
+					<li><a href="./contact.html">Contact</a></li>
+					<li class="li-input">
+						<input
+							type="checkbox"
+							class="dark-mode-button"
+							onclick="darkMode(),activarModoOscuroManual()"
+							placeholder=""
+							title="DarkModeBtn"
+						/>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<!--Contenido de la página-->
+
+		<main class="content-about-us">
+			<div class="about-us-container">
+				<h1>Sobre nosotros</h1>
+				
+			</div>
+		</main>
+	</body>
+	<script src="../scripts/screenAdaptability.js" type="text/javascript"></script>
+	<script src="../scripts/darkMode.js" type="text/javascript"></script>
+	<script src="../scripts/script.js" type="text/javascript"></script>
+</html>
